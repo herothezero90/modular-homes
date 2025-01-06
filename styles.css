@@ -1,7 +1,10 @@
 :root {
-    --primary-color: #FAD538;
+    /* --primary-color: #FAD538;
     --secondary-color: #d7622c;
-    --tertiary-color: #B2B045;
+    --tertiary-color: #B2B045;     */
+    --primary-color: #1C2C59;
+    --secondary-color: #F5F3EC;
+    --tertiary-color: #FBB94F;
     --font-family: 'Montserrat', sans-serif;
     --font-weight-bold: 700;
     --font-weight-medium: 500;
@@ -61,6 +64,7 @@ html {
     font-size: 2rem;
 }
 
+
 /* Hero Section */
 .hero {
     position: relative;
@@ -70,7 +74,7 @@ html {
 }
 
 .bg {
-    background-image: url('./media/hero-fruitontable.png');
+    background-image: url('./media/hero image box.png');
     height: 100%;
     background-position: center;
     background-repeat: no-repeat;
@@ -112,7 +116,7 @@ html {
 .shop-button {
     padding: 0.75rem 1.5rem;
     margin-top: 3rem;
-    background-color: var(--secondary-color);
+    background-color: var(--tertiary-color);
     opacity: 0;
     animation: slideUp 2s forwards;
     animation-delay: 3.5s;
@@ -152,10 +156,10 @@ html {
     height: 100%;
     border-radius: 12px;
     background: linear-gradient(to left,
-            hsl(340deg 100% 16%) 0%,
-            hsl(340deg 100% 32%) 8%,
-            hsl(340deg 100% 32%) 92%,
-            hsl(340deg 100% 16%) 100%);
+            hsl(48, 100%, 16%) 0%,
+            hsl(40, 100%, 32%) 8%,
+            hsl(50, 91%, 41%) 92%,
+            hsl(58, 89%, 42%) 100%);
 }
 
 .shop-button-front {
@@ -166,7 +170,7 @@ html {
     font-size: 2rem;
     font-weight: var(--font-weight-bold);
     color: white;
-    background: hsl(38, 98%, 48%);
+    background: var(--primary-color);
     will-change: transform;
     transform: translateY(-4px);
     transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
@@ -251,11 +255,193 @@ html {
 
 .subscribe-button {
     padding: 10px 20px;
-    background-color: var(--secondary-color);
+    background-color: var(--primary-color);
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+}
+
+/******************************************************
+ * PRICING SECTION
+ ******************************************************/
+.pricing-section {
+    background-color: var(--tertiary-color);
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.pricing-heading {
+    font-size: 2rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+}
+
+/* Container that holds the 3 cards in a row */
+.pricing-cards-container {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    /* space between cards */
+    flex-wrap: wrap;
+    /* allows wrapping if needed */
+}
+
+/* Each card */
+.pricing-card {
+    background-color: #fff;
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    /* fixed width to keep cards uniform */
+    margin: 0 auto;
+    /* center them if wrapping occurs */
+}
+
+/* Header area of the card */
+.pricing-header {
+    background-color: #f9f9f9;
+    padding: 1.5rem;
+}
+
+.pricing-tier {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.pricing-cost {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+}
+
+.pricing-cost .currency {
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.pricing-cost .amount {
+    font-size: 3rem;
+    font-weight: 800;
+    margin: 0 0.25rem;
+    color: #333;
+}
+
+.pricing-cost .frequency {
+    font-size: 1rem;
+    color: #777;
+}
+
+/* Body of the card */
+.pricing-body {
+    background-color: #f1f1f1;
+    padding: 1.5rem;
+    flex: 1;
+    /* expand to fill vertical space */
+    display: flex;
+    flex-direction: column;
+}
+
+.feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem 0;
+}
+
+.feature-list li {
+    margin-bottom: 0.5rem;
+    color: #555;
+}
+
+.feature-list i {
+    color: var(--primary-color);
+    /* check icon color */
+    margin-right: 0.5rem;
+}
+
+/* Button */
+.btn-trial {
+    margin-top: auto;
+    width: 100%;
+    padding: 0.75rem;
+    background-color: var(--primary-color);
+    color: #fff;
+    border-radius: 0.5rem;
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-trial:hover {
+    background-color: #2f3a6d;
+}
+
+@media (max-width: 1200px) {
+    .pricing-tier {
+        font-size: 1.1rem;
+    }
+
+    .pricing-cost .currency {
+        font-size: 1.3rem;
+    }
+
+    .pricing-cost .amount {
+        font-size: 2.4rem;
+    }
+
+    .pricing-cost .frequency {
+        font-size: 0.9rem;
+    }
+
+    .feature-list li {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 800px) {
+    .pricing-cards-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .pricing-card {
+        width: 80%;
+        max-width: 400px;
+        margin-bottom: 1.5rem;
+    }
+
+    .pricing-tier {
+        font-size: 0.9rem;
+    }
+
+    .pricing-cost .currency {
+        font-size: 1.2rem;
+    }
+
+    .pricing-cost .amount {
+        font-size: 2rem;
+    }
+
+    .pricing-cost .frequency {
+        font-size: 0.8rem;
+    }
+
+    .feature-list li {
+        font-size: 0.8rem;
+    }
+
+    .btn-trial {
+        font-size: 0.7rem;
+
+    }
 }
 
 /* About Us Section */
@@ -290,7 +476,7 @@ html {
 /* Cards Section */
 .cards-section {
     padding: 50px 0;
-    background-color: #f8f9fa;
+    background-color: var(--primary-color);
 }
 
 .card-title {
@@ -307,18 +493,19 @@ html {
     opacity: 0;
     transform: translateY(50px);
     transition: opacity 0.6s ease, transform 0.6s ease;
+    border: none;
 }
 
 #animated-card-1 {
-    background-color: var(--primary-color);
+    background-color: var(--secondary-color);
 }
 
 #animated-card-2 {
-    background-color: #f99e49;
+    background-color: var(--secondary-color);
 }
 
 #animated-card-3 {
-    background-color: var(--tertiary-color);
+    background-color: var(--secondary-color);
 }
 
 .animated-card.slide-up {
@@ -334,7 +521,7 @@ html {
 .footer {
     padding: 10px;
     text-align: center;
-    background-color: var(--secondary-color);
+    background-color: var(--primary-color);
 }
 
 .logo-img {
@@ -348,17 +535,15 @@ html {
     text-shadow: var(--text-shadow);
 }
 
-/* Responsive Styles */
 @media (max-width: 430px) {
     .navbar-collapse {
         border-radius: 20px;
-        background-color: var(--secondary-color);
+        background-color: var(--tertiary-color);
         display: flex;
         flex-wrap: wrap;
     }
 
     .navbar-nav .nav-link {
-        /* display: inline-block; */
         padding: 10px 15px;
     }
 
@@ -368,8 +553,8 @@ html {
     }
 
     .navbar-toggler {
-        background-color: var(--secondary-color) !important;
-        border: 1px solid white !important;
+        /* background-color: var(--secondary-color) !important; */
+        border: 1px solid var(--tertiary-color) !important;
     }
 }
 
