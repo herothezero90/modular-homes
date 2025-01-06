@@ -20,22 +20,16 @@ const products = [
     price: "$35.00",
     image: "./media/premade_meals.jpeg",
   },
-  // Add more products as needed...
 ];
 
 function renderShopCards() {
   const shopRow = document.getElementById("shopRow");
   if (!shopRow) return; // Safety check if element isn't found
 
-  // Clear existing cards (if any)
   shopRow.innerHTML = "";
 
-  // Loop through each product and create the card
   products.forEach((product) => {
-    // Create a column wrapper with responsive classes:
-    //   col-6 => 2 cards in a row on very small screens
-    //   col-md-4 => 3 cards in a row on medium
-    //   col-lg-3 => 4 cards in a row on large
+  
     const colDiv = document.createElement("div");
     colDiv.className = "col-6 col-md-4 col-lg-3 mb-4";
 
@@ -55,7 +49,6 @@ function renderShopCards() {
       </div>
     `;
 
-    // Append the new column (with the card) to the row
     shopRow.appendChild(colDiv);
   });
 }

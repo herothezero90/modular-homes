@@ -262,9 +262,9 @@ html {
     cursor: pointer;
 }
 
-/******************************************************
- * PRICING SECTION
- ******************************************************/
+
+/* PRICING SECTION */
+
 .pricing-section {
     background-color: var(--tertiary-color);
     padding: 50px 20px;
@@ -278,14 +278,11 @@ html {
     margin-bottom: 2rem;
 }
 
-/* Container that holds the 3 cards in a row */
 .pricing-cards-container {
     display: flex;
     justify-content: center;
     gap: 1.5rem;
-    /* space between cards */
     flex-wrap: wrap;
-    /* allows wrapping if needed */
 }
 
 /* Each card */
@@ -297,9 +294,7 @@ html {
     display: flex;
     flex-direction: column;
     width: 300px;
-    /* fixed width to keep cards uniform */
     margin: 0 auto;
-    /* center them if wrapping occurs */
 }
 
 /* Header area of the card */
@@ -343,7 +338,6 @@ html {
     background-color: #f1f1f1;
     padding: 1.5rem;
     flex: 1;
-    /* expand to fill vertical space */
     display: flex;
     flex-direction: column;
 }
