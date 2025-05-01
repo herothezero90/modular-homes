@@ -1,614 +1,512 @@
+/* ==========================================================================
+   0. Imports & Theme Variables
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Cal+Sans&display=swap');
+
 :root {
-    /* --primary-color: #FAD538;
-    --secondary-color: #d7622c;
-    --tertiary-color: #B2B045;     */
-    --primary-color: #1C2C59;
-    --secondary-color: #F5F3EC;
-    --tertiary-color: #FBB94F;
-    --font-family: 'Montserrat', sans-serif;
-    --font-weight-bold: 700;
-    --font-weight-medium: 500;
-    --font-weight-regular: 400;
-    --text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    /* Palette */
+    --primary-color: #E07B39;
+    --secondary-color: #CDE0CC;
+    --tertiary-color: #162A23;
+
+    /* Typography */
+    --font-body: 'Montserrat', sans-serif;
+    --font-heading: 'Cal Sans', sans-serif;
+
+    --fw-bold: 700;
+    --text-shadow: 1px 1px 2px rgba(46, 46, 46, 0.5);
 }
 
-body,
-html {
-    height: 100%;
+/* ==========================================================================
+      1. Global Resets & Base Typography
+      ========================================================================== */
+*,
+*::before,
+*::after {
     margin: 0;
-    font-family: var(--font-family);
-    background-color: var(--secondary-color);
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* Navbar */
+html,
+body {
+    font-family: var(--font-body);
+    color: var(--tertiary-color);
+    background: var(--secondary-color);
+    scroll-behavior: smooth;
+}
+
+/* Headings & nav links */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.navbar-nav .nav-link {
+    font-family: var(--font-heading);
+    color: var(--tertiary-color) !important;
+    font-weight: var(--fw-bold);
+}
+
+#lang-en,
+#lang-hr {
+    color: var(--primary-color) !important;
+    font-weight: var(--fw-bold);
+}
+
+#lang-en:hover,
+#lang-hr:hover {
+    color: var(--tertiary-color) !important;
+    font-weight: var(--fw-bold);
+}
+
+
+.navbar-brand {
+    color: var(--primary-color) !important;
+    font-weight: var(--fw-bold);
+}
+
+/* Remove Bootstrap’s default color utilities */
+.text-primary,
+.text-secondary,
+.bg-primary,
+.bg-secondary,
+.btn-primary,
+.btn-secondary {
+    color: unset !important;
+    background-color: unset !important;
+    border-color: unset !important;
+}
+
+/* ==========================================================================
+      2. Navbar
+      ========================================================================== */
 .navbar {
-    background-color: transparent !important;
     position: absolute;
-    width: 100%;
     top: 0;
-    z-index: 10;
+    width: 100%;
+    background: transparent !important;
+    z-index: 1000;
 }
 
 .navbar-brand {
-    font-size: 1.5rem;
-    font-weight: var(--font-weight-bold);
-    color: white;
-    text-shadow: var(--text-shadow);
+    /* text-shadow: var(--text-shadow); */
 }
 
 .navbar-nav .nav-link {
-    font-size: 1.5rem;
-    font-weight: var(--font-weight-bold);
-    color: white !important;
-    text-shadow: var(--text-shadow);
+    /* text-shadow: var(--text-shadow); */
 }
 
 .navbar-nav .nav-link:hover {
     color: var(--primary-color) !important;
 }
 
-.navbar-nav .nav-item .nav-link i {
-    font-size: 1.5rem;
-    text-shadow: var(--text-shadow);
-}
+/* ==========================================================================
+      3. Hero Section
+      ========================================================================== */
 
-.navbar-toggler {
-    border-color: rgba(255, 255, 255, 0.8);
-}
-
-.navbar-toggler-icon {
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28255, 255, 255, 0.8%29' stroke-width='2' linecap='round' linejoin='round' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
-}
-
-.nav-link .fa-xl {
-    font-size: 2rem;
-}
+/* Hero Frame */
 
 
-/* Hero Section */
-.hero {
+.hero-frame {
     position: relative;
-    height: 100vh;
-    padding: 0;
-    color: white;
-}
-
-.bg {
-    background-image: url('./media/hero image box.png');
-    height: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    opacity: 0;
-    animation: fadeIn 2s forwards;
-}
-
-.hero h1 {
-    font-size: 4rem;
-    opacity: 0;
-    animation: slideDown 2s forwards;
-    animation-delay: 2s;
-    font-weight: var(--font-weight-bold);
-    text-shadow: var(--text-shadow);
-    color: var(--primary-color);
-}
-
-.hero .btn-primary {
-    opacity: 0;
-    animation: slideUp 2s forwards;
-    animation-delay: 2.5s;
-    font-family: var(--font-family);
-    font-weight: var(--font-weight-bold);
-}
-
-.hero-p {
-    opacity: 0;
-    animation: slideUp 2s forwards;
-    animation-delay: 3s;
-    font-family: var(--font-family);
-    font-size: x-large;
-    font-weight: var(--font-weight-bold);
-    margin-top: 4vh;
-    text-shadow: var(--text-shadow);
-}
-
-/* Button */
-.shop-button {
-    padding: 0.75rem 1.5rem;
-    margin-top: 3rem;
-    background-color: var(--tertiary-color);
-    opacity: 0;
-    animation: slideUp 2s forwards;
-    animation-delay: 3.5s;
-}
-
-.shop-button-pushable {
-    position: relative;
-    border: none;
-    background: transparent;
-    padding: 0;
-    cursor: pointer;
-    outline-offset: 4px;
-    transition: filter 250ms;
-    -webkit-user-select: none;
-    user-select: none;
-    touch-action: manipulation;
-}
-
-.shop-button-shadow {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    width: 140%;
+    max-width: 2500px;
+    height: 60vh;
+    margin: 0 auto;
+    border: 8px solid var(--tertiary-color);
     border-radius: 12px;
-    background: hsl(0deg 0% 0% / 0.25);
-    will-change: transform;
-    transform: translateY(2px);
-    transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
+    overflow: hidden;
+    background: #000;
+    /* fallback */
 }
 
-.shop-button-edge {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
+/* Make carousel fill the frame */
+#imageCarousel,
+#imageCarousel .carousel-inner,
+#imageCarousel .carousel-item {
     height: 100%;
-    border-radius: 12px;
-    background: linear-gradient(to left,
-            hsl(48, 100%, 16%) 0%,
-            hsl(40, 100%, 32%) 8%,
-            hsl(50, 91%, 41%) 92%,
-            hsl(58, 89%, 42%) 100%);
 }
 
-.shop-button-front {
-    display: block;
-    position: relative;
-    padding: 12px 27px;
-    border-radius: 12px;
-    font-size: 2rem;
-    font-weight: var(--font-weight-bold);
-    color: white;
-    background: var(--primary-color);
-    will-change: transform;
-    transform: translateY(-4px);
-    transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
+/* Ensure images cover fully */
+#imageCarousel img {
+    object-fit: cover;
 }
 
-.shop-button-pushable:hover {
-    filter: brightness(110%);
-}
-
-.shop-button-pushable:hover .shop-button-front {
-    transform: translateY(-6px);
-    transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
-}
-
-.shop-button-pushable:active .shop-button-front {
-    transform: translateY(-2px);
-    transition: transform 34ms;
-}
-
-.shop-button-pushable:hover .shop-button-shadow {
-    transform: translateY(4px);
-    transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
-}
-
-.shop-button:active .shop-button-shadow {
-    transform: translateY(1px);
-    transition: transform 34ms;
-}
-
-.shop-button-pushable:focus:not(:focus-visible) {
-    outline: none;
-}
-
-/* Pop-up */
-.popup-form-overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 999;
-}
-
-.popup-form {
+/* Static caption */
+.hero-caption {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    text-align: center;
-}
-
-.close-popup {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-    font-size: 24px;
-    color: var(--secondary-color);
-}
-
-.popup-form h3 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-}
-
-.popup-form p {
-    margin-bottom: 15px;
-}
-
-#emailInput {
+    z-index: 2;
     width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid var(--tertiary-color);
-    border-radius: 4px;
+    padding: 0 1rem;
 }
 
-.subscribe-button {
-    padding: 10px 20px;
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+.hero-caption h1 {
+    color: var(--secondary-color) !important;
 }
 
-
-/* PRICING SECTION */
-
-.pricing-section {
-    background-color: var(--tertiary-color);
-    padding: 50px 20px;
-    text-align: center;
+/* #hero .carousel-item {
+    height: 60vh;
+    background-size: cover;
+    background-position: center;
 }
 
-.pricing-heading {
-    font-size: 2rem;
-    font-weight: var(--font-weight-bold);
+#hero .carousel-caption .display-4 {
     color: var(--primary-color);
+}
+
+#hero .lead {
+    color: var(--primary-color);
+}
+
+#hero .carousel-caption .btn {
+    background: var(--tertiary-color);
+    color: #fff;
+    text-shadow: none;
+}  */
+
+/* ==========================================================================
+      5. Features Section
+      ========================================================================== */
+#features {
+    background: var(--secondary-color);
+    padding: 10px !important;
+}
+
+.feature-card {
+    background-image: url('./media/polka_dot_4.png');
+    background-color: #f2f2f2;
+    background-repeat: repeat;
+    background-size: cover;
+    border-radius: 16px;
+    padding: 1rem;
+    box-shadow:
+        rgba(50, 50, 93, 0.1) 0 10px 20px,
+        rgba(0, 0, 0, 0.07) 0 4px 6px;
+}
+
+.feature-card h5 {
+    color: #E07B39 !important;
+    margin-bottom: .75rem;
+    font-size: 1.1rem;
+}
+
+.feature-card p {
+    color: var(--secondary-color);
+    font-size: 0.8rem;
+}
+
+.feature-card i {
+    color: var(--secondary-color) !important;
+    background-color: #555;
+}
+
+/* ==========================================================================
+      4. About Section
+      ========================================================================== */
+#about {
+    /* background: var(--tertiary-color); */
+    background-image: url('./media/gggrain.svg');
+    background-color: #f2f2f2;
+    background-repeat: repeat;
+    background-size: cover;
+    padding: 4rem 0;
+    border-radius: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#about .section-title,
+#about h2 {
+    color: var(--secondary-color) !important;
+}
+
+#about p {
+    color: var(--secondary-color);
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+}
+
+/* ==========================================================================
+      6. Projects Gallery
+      ========================================================================== */
+#projects {
+    background: var(--secondary-color);
+    padding: 4rem 0;
+}
+
+#projects .section-title {
+    color: var(--tertiary-color);
+    margin-bottom: .5rem;
+}
+
+#projects .section-subtitle {
+    color: #555;
     margin-bottom: 2rem;
 }
 
-.pricing-cards-container {
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-    flex-wrap: wrap;
+#projects .nav-pills .nav-link {
+    color: var(--tertiary-color);
+    margin: 0 .5rem;
 }
 
-/* Each card */
-.pricing-card {
-    background-color: #fff;
-    border-radius: 0.5rem;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    width: 300px;
-    margin: 0 auto;
-}
-
-/* Header area of the card */
-.pricing-header {
-    background-color: #f9f9f9;
-    padding: 1.5rem;
-}
-
-.pricing-tier {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: var(--primary-color);
-    margin-bottom: 1rem;
-}
-
-.pricing-cost {
-    display: flex;
-    align-items: baseline;
-    justify-content: center;
-}
-
-.pricing-cost .currency {
-    font-size: 1.5rem;
-    color: #333;
-}
-
-.pricing-cost .amount {
-    font-size: 3rem;
-    font-weight: 800;
-    margin: 0 0.25rem;
-    color: #333;
-}
-
-.pricing-cost .frequency {
-    font-size: 1rem;
-    color: #777;
-}
-
-/* Body of the card */
-.pricing-body {
-    background-color: #f1f1f1;
-    padding: 1.5rem;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-}
-
-.feature-list {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 1rem 0;
-}
-
-.feature-list li {
-    margin-bottom: 0.5rem;
-    color: #555;
-}
-
-.feature-list i {
-    color: var(--primary-color);
-    /* check icon color */
-    margin-right: 0.5rem;
-}
-
-/* Button */
-.btn-trial {
-    margin-top: auto;
-    width: 100%;
-    padding: 0.75rem;
-    background-color: var(--primary-color);
+#projects .nav-pills .nav-link.active {
+    background: var(--tertiary-color);
     color: #fff;
-    border-radius: 0.5rem;
-    border: none;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
 }
 
-.btn-trial:hover {
-    background-color: #2f3a6d;
+#projects img {
+    transition: transform .3s;
 }
 
-@media (max-width: 1200px) {
-    .pricing-tier {
-        font-size: 1.1rem;
-    }
-
-    .pricing-cost .currency {
-        font-size: 1.3rem;
-    }
-
-    .pricing-cost .amount {
-        font-size: 2.4rem;
-    }
-
-    .pricing-cost .frequency {
-        font-size: 0.9rem;
-    }
-
-    .feature-list li {
-        font-size: 0.95rem;
-    }
+#projects img:hover {
+    transform: scale(1.05);
 }
 
-@media (max-width: 800px) {
-    .pricing-cards-container {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .pricing-card {
-        width: 80%;
-        max-width: 400px;
-        margin-bottom: 1.5rem;
-    }
-
-    .pricing-tier {
-        font-size: 0.9rem;
-    }
-
-    .pricing-cost .currency {
-        font-size: 1.2rem;
-    }
-
-    .pricing-cost .amount {
-        font-size: 2rem;
-    }
-
-    .pricing-cost .frequency {
-        font-size: 0.8rem;
-    }
-
-    .feature-list li {
-        font-size: 0.8rem;
-    }
-
-    .btn-trial {
-        font-size: 0.7rem;
-
-    }
-}
-
-/* About Us Section */
-.about-us-section {
-    background-color: var(--secondary-color);
-}
-
-.about-us-section h2 {
-    font-size: 2.5rem;
-    font-weight: var(--font-weight-bold);
-    color: var(--primary-color);
-    margin-bottom: 1.5rem;
-}
-
-.about-us-section p {
-    font-size: 1.125rem;
-    font-weight: var(--font-weight-regular);
-    color: #333;
-}
-
-.animated-section {
-    opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-.animated-section.slide-up {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Cards Section */
-.cards-section {
-    padding: 50px 0;
-    background-color: var(--primary-color);
-}
-
-.card-title {
-    font-family: var(--font-family);
-    font-weight: var(--font-weight-medium);
-}
-
-.card-text {
-    font-family: var(--font-family);
-    font-weight: var(--font-weight-regular);
-}
-
-.animated-card {
-    opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-    border: none;
-}
-
-#animated-card-1 {
-    background-color: var(--secondary-color);
-}
-
-#animated-card-2 {
-    background-color: var(--secondary-color);
-}
-
-#animated-card-3 {
-    background-color: var(--secondary-color);
-}
-
-.animated-card.slide-up {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.animated-card.fade-in {
-    animation: fadeIn 2s forwards;
-}
-
-/* Footer */
-.footer {
-    padding: 10px;
+/* ==========================================================================
+      7. Constructions Section
+      ========================================================================== */
+#constructions {
+    background: var(--secondary-color);
+    padding: 4rem 0;
     text-align: center;
-    background-color: var(--primary-color);
 }
 
-.logo-img {
-    width: 50px;
-    height: auto;
+#constructions .section-title {
+    color: var(--secondary-color);
+    margin-bottom: .5rem;
 }
 
-.social-icon {
-    font-size: 2rem;
-    margin: 10px;
-    text-shadow: var(--text-shadow);
+#constructions .section-subtitle {
+    color: var(--secondary-color);
+    margin-bottom: 2rem;
 }
 
-@media (max-width: 430px) {
-    .navbar-collapse {
-        border-radius: 20px;
-        background-color: var(--tertiary-color);
-        display: flex;
-        flex-wrap: wrap;
-    }
-
-    .navbar-nav .nav-link {
-        padding: 10px 15px;
-    }
-
-    .social-small-screen {
-        display: flex !important;
-        justify-content: flex-end;
-    }
-
-    .navbar-toggler {
-        /* background-color: var(--secondary-color) !important; */
-        border: 1px solid var(--tertiary-color) !important;
-    }
+.construction-card {
+    background-image: url('./media/polka_dot_1.png');
+    background-color: #f2f2f2;
+    background-repeat: repeat;
+    background-size: cover;
+    border-radius: 16px;
+    box-shadow:
+        rgba(50, 50, 93, 0.1) 0 10px 20px,
+        rgba(0, 0, 0, 0.07) 0 4px 6px;
+    overflow: hidden;
+    color: var(--secondary-color);
 }
 
-@media (min-width: 1500px) {
-    .hero h1 {
-        font-size: 7rem;
-    }
-
-    .hero .btn-primary {
-        font-size: 3rem;
-    }
-
-    .hero-p {
-        font-size: 1.5rem;/
-    }
-
-    .navbar-brand {
-        font-size: 2rem;
-    }
-
-    .navbar-nav .nav-link {
-        font-size: 1.5rem;
-    }
-
-    .navbar-nav .nav-item .nav-link i {
-        font-size: 2rem;
-    }
-
-    .nav-link .fa-xl {
-        font-size: 2.5rem;
-    }
+.construction-card h5 {
+    color: var(--tertiary-color);
+    margin-bottom: .5rem;
+    color: var(--secondary-color) !important;
 }
 
-/* Animations */
-@keyframes fadeIn {
-    to {
-        opacity: 1;
-    }
+.construction-card p {
+    color: var(--tertiary-color);
+    color: var(--secondary-color);
 }
 
-@keyframes slideDown {
-    from {
-        opacity: 0;
-        transform: translateY(-50px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+/* ==========================================================================
+      8. Services Section
+      ========================================================================== */
+#services {
+    background: var(--secondary-color);
+    padding: 4rem 0;
 }
 
-@keyframes slideUp {
-    from {
-        opacity: 0;
-        transform: translateY(50px);
+#services h2 {
+    color: var(--tertiary-color);
+    margin-bottom: 2rem;
+}
+
+#services .card {
+    border-radius: 16px;
+    box-shadow:
+        rgba(50, 50, 93, 0.1) 0 10px 20px,
+        rgba(0, 0, 0, 0.07) 0 4px 6px;
+    padding: 2rem;
+    text-align: center;
+}
+
+#services h5,
+#services p {
+    color: var(--tertiary-color);
+}
+
+#services i {
+    color: #E07B39 !important;
+}
+
+/* benefits section */
+#benefits {
+    /* background: var(--tertiary-color); */
+    background-image: url('./media/gggrain.svg');
+    background-color: #f2f2f2;
+    background-repeat: repeat;
+    background-size: cover;
+    padding: 4rem 0;
+    border-radius: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#benefits .section-title,
+#benefits h5 {
+    color: var(--secondary-color) !important;
+}
+
+#benefits p {
+    color: var(--secondary-color);
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+}
+
+/* ==========================================================================
+      9. Statistics Section
+      ========================================================================== */
+#stats {
+    background: var(--secondary-color);
+    padding: 4rem 0;
+}
+
+.stat-card {
+    padding: 2rem;
+    text-align: center;
+    overflow: hidden;
+    color: var(--tertiary-color);
+}
+
+.stat-card i {
+    color: var(--primary-color) !important;
+    margin-bottom: .5rem;
+}
+
+.stat-card h2,
+.stat-card p {
+    color: var(--tertiary-color) !important;
+}
+
+/* ==========================================================================
+      10. Contact Section
+      ========================================================================== */
+#contact {
+    background: var(--secondary-color);
+    padding: 0 !important;
+}
+
+#contact .card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 6px;
+    text-align: center;
+    background-image: url('./media/polka_dot_3.png');
+    background-color: #f2f2f2;
+    background-repeat: repeat;
+    background-size: contain;
+    border-radius: 16px;
+    box-shadow:
+        rgba(50, 50, 93, 0.1) 0 10px 20px,
+        rgba(0, 0, 0, 0.07) 0 4px 6px;
+    overflow: hidden;
+    color: var(--secondary-color);
+}
+
+#contact .card-body {
+    padding: 2rem;
+}
+
+#contact h5,
+#contact p {
+    color: var(--secondary-color) !important;
+}
+
+#contact h5 {
+    font-size: 1.5rem;
+}
+
+#contact p {
+    font-size: 0.9rem !important;
+}
+
+#contact i {
+    margin-top: 0.5rem;
+    color: var(--primary-color) !important;
+}
+
+#contact .form-control {
+    border-color: var(--tertiary-color);
+    border-radius: 20px;
+    background: var(--secondary-color) !important;
+}
+
+#contact .btn-primary {
+    background: var(--secondary-color) !important;
+    border: none !important;
+    border-radius: 50px;
+    padding: .75rem 1.5rem;
+    color: #fff !important;
+}
+
+#contact .btn-primary:hover {
+    background: #e0a03b !important;
+}
+
+/* ==========================================================================
+      11. Footer
+      ========================================================================== */
+footer {
+    background: var(--tertiary-color);
+    color: #fff;
+    padding: 2rem 0;
+}
+
+footer h4 {
+    font-weight: var(--fw-bold);
+    margin-bottom: .5rem;
+}
+
+footer p {
+    margin-bottom: .5rem;
+}
+
+.btn-icon {
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    color: #fff;
+    padding: .5rem;
+    border-radius: .25rem;
+    transition: background .3s;
+}
+
+.btn-icon:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* ==========================================================================
+      12. Utility & Responsive
+      ========================================================================== */
+.object-fit-cover {
+    object-fit: cover;
+}
+
+@media (max-width: 576px) {
+    .construction-card .row.no-gutters {
+        display: block;
     }
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
+    .construction-card .col-5,
+    .construction-card .col-7 {
+        width: 100%;
+    }
+
+    .construction-card .col-5 img {
+        height: 200px;
     }
 }

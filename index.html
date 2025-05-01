@@ -1,327 +1,566 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8" />
-	<meta
-		name="viewport"
-		content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
-	<title>Fruit for You</title>
-	<link
-		href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-		rel="stylesheet"/>
-	<link
-		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-		rel="stylesheet"/>
-	<script
-		src="https://kit.fontawesome.com/39c7bbdf94.js"
-		crossorigin="anonymous"></script>
-	<link
-		href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap"
-		rel="stylesheet"/>
-	<link rel="stylesheet" href="styles.css" />
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+	<title data-i18n="title">Modular Homes</title>
+	<!-- Bootstrap CSS -->
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+	<!-- FontAwesome -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+	<!-- Custom Styles -->
+	<link href="styles.css" rel="stylesheet">
 </head>
+
 <body>
-	<!-- Hero -->
-	<section
-		class="hero bg d-flex flex-column justify-content-center align-items-center">
-		<!-- Navbar -->
-		<nav class="navbar navbar-expand-md">
-			<div class="container-fluid">
-				<a class="navbar-brand" href="#">
-					<img src="./media/fruti-logo.png" alt="Logo" class="logo-img" />
-				</a>
-				<button
-					class="navbar-toggler"
-					title="navigation button"
-					type="button"
-					data-toggle="collapse"
-					data-target="#collapsibleNavbar"
-				>
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="collapsibleNavbar">
-					<ul class="navbar-nav">
-						<li class="nav-item">
-							<a class="nav-link" href="#about-us-section">Home</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#footer">Contact</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#about-us-section">About Us</a>
-						</li>
-					</ul>
-					<div
-						class="social-small-screen ml-auto d-flex flex-row align-items-end"
-					>
-						<a
-							class="nav-link"
-							title="facebook"
-							href="https://www.facebook.com/"
-							><i
-								class="fa-brands fa-square-facebook fa-xl"
-								style="color: #74c0fc"
-							></i
-						></a>
-						<a class="nav-link" title="twitter" href="https://www.x.com/"
-							><i class="fa-brands fa-square-x-twitter fa-xl"></i
-						></a>
-						<a
-							class="nav-link"
-							title="instagram"
-							href="https://www.instagram.com/"
-							><i
-								class="fa-brands fa-square-instagram fa-xl"
-								style="color: #c729b2"
-							></i
-						></a>
+
+	<svg width="0" height="0" style="position:absolute">
+		<filter id="noiseFilter">
+			<feTurbulence type="fractalNoise" baseFrequency="1.57" numOctaves="3" stitchTiles="stitch" />
+		</filter>
+	</svg>
+
+	<!-- Navbar -->
+	<nav class="navbar navbar-expand-md navbar-dark bg-transparent fixed-top">
+		<div class="container">
+
+			<!-- Toggler -->
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navMenu" aria-controls="navMenu"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<!-- Links -->
+			<div class="collapse navbar-collapse justify-content-center" id="navMenu">
+				<ul class="navbar-nav">
+					<li class="nav-item mx-1"><a class="nav-link" href="#features" data-i18n="nav.features">Features</a></li>
+					<li class="nav-item mx-1"><a class="nav-link" href="#services" data-i18n="nav.services">Services</a></li>
+					<li class="nav-item mx-1"><a class="nav-link" href="#about" data-i18n="nav.about">About</a></li>
+					<li class="nav-item mx-1"><a class="nav-link" href="#constructions"
+							data-i18n="nav.constructions">Constructions</a></li>
+					<li class="nav-item mx-1"><a class="nav-link" href="#projects" data-i18n="nav.projects">Projects</a></li>
+					<li class="nav-item mx-1"><a class="nav-link" href="#contact" data-i18n="nav.contact">Contact</a></li>
+				</ul>
+
+				<!-- Optional language switcher -->
+				<ul class="navbar-nav ml-5">
+					<li class="nav-item mx-1"><a class="nav-link" href="#" id="lang-en">EN</a></li>
+					<li class="nav-item mx-1"><a class="nav-link" href="#" id="lang-hr">HR</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<!-- Hero Slider -->
+	<section id="hero" class="pt-5 pb-2">
+		<div class="container d-flex justify-content-center">
+			<div class="hero-frame position-relative">
+				<!-- Carousel of images only -->
+				<div id="imageCarousel" class="carousel slide h-100" data-ride="carousel" data-interval="4000">
+					<div class="carousel-inner h-100">
+						<div class="carousel-item active h-100">
+							<img src="./media/placeholder_1.jpg" class="d-block w-100 h-100" alt="Slide 1">
+						</div>
+						<div class="carousel-item h-100">
+							<img src="./media/placeholder_2.jpg" class="d-block w-100 h-100" alt="Slide 2">
+						</div>
+					</div>
+				</div>
+
+				<!-- Static caption over the frame -->
+				<div class="hero-caption text-center text-white">
+					<h1 class="display-4">Welcome to Modular Homes</h1>
+					<p class="lead">Eco-friendly prefab houses in weeks, not months.</p>
+					<a href="#projects" class="btn btn-primary">Learn More</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Features Section -->
+	<section id="features" data-aos="fade-up" data-aos-offset="300" data-aos-easing="ease-in-sine" class="py-5">
+		<div class="container">
+			<h2 class="section-title mb-1 mt-3 text-center" data-i18n="features.headingMain">
+				Why choose Modular Homes?
+			</h2>
+			<p class="lead text-muted mb-5 text-center" data-i18n="features.subheading">
+				Discover the advantages of eco-friendly, fast-built modular living.
+			</p>
+
+			<!-- flex row with stretched children -->
+			<div class="row d-flex align-items-stretch">
+				<div class="col-md-4 mb-4 d-flex">
+					<div class="card feature-card p-4 w-100">
+						<div class="icon-wrapper mb-3">
+							<i class="fas fa-stopwatch fa-lg text-primary"></i>
+						</div>
+						<h5 data-i18n="features.card1.title">Rapid Construction</h5>
+						<p data-i18n="features.card1.desc">
+							Modular homes go from factory floor to finished site in as little as 3–4 weeks.
+						</p>
+					</div>
+				</div>
+
+				<div class="col-md-4 mb-4 d-flex">
+					<div class="card feature-card p-4 w-100">
+						<div class="icon-wrapper mb-3">
+							<i class="fas fa-check-circle fa-lg text-primary"></i>
+						</div>
+						<h5 data-i18n="features.card2.title">Superior Quality</h5>
+						<p data-i18n="features.card2.desc">
+							Precision-built under controlled conditions for unbeatable consistency.
+						</p>
+					</div>
+				</div>
+
+				<div class="col-md-4 mb-4 d-flex">
+					<div class="card feature-card p-4 w-100">
+						<div class="icon-wrapper mb-3">
+							<i class="fas fa-leaf fa-lg text-primary"></i>
+						</div>
+						<h5 data-i18n="features.card3.title">Eco-Friendly & Cost-Effective</h5>
+						<p data-i18n="features.card3.desc">
+							Built from recycled materials with minimal waste—saving you time and money.
+						</p>
 					</div>
 				</div>
 			</div>
-		</nav>
-		<!-- Button -->
+		</div>
+	</section>
+
+	<!-- Services -->
+	<section id="services" class="py-5">
+		<div class="container">
+			<h2 class="text-center mb-4" data-i18n="services.title">Services</h2>
+			<div class="row">
+				<!-- Existing Service 1 -->
+				<div data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine" class="col-md-4 mb-4">
+					<div class="text-center p-3">
+						<i class="fas fa-pencil-ruler fa-2x mb-3 text-primary"></i>
+						<h5>Design &amp; Planning</h5>
+						<p>Custom architectural layouts and 3D models tailored to your site and budget.</p>
+					</div>
+				</div>
+				<!-- Existing Service 2 -->
+				<div data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine" class="col-md-4 mb-4">
+					<div class="text-center p-3">
+						<i class="fas fa-industry fa-2x mb-3 text-primary"></i>
+						<h5>Factory Production</h5>
+						<p>Precision manufacturing under controlled conditions for zero waste and high quality.</p>
+					</div>
+				</div>
+				<!-- Existing Service 3 -->
+				<div data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine" class="col-md-4 mb-4">
+					<div class="text-center p-3">
+						<i class="fas fa-truck-loading fa-2x mb-3 text-primary"></i>
+						<h5>On-Site Assembly</h5>
+						<p>Full turnkey installation in days, handled by our certified construction team.</p>
+					</div>
+				</div>
+				<!-- Existing Service 4 -->
+				<div data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine" class="col-md-4 mb-4">
+					<div class="text-center p-3">
+						<i class="fas fa-leaf fa-2x mb-3 text-primary"></i>
+						<h5>Energy Certification</h5>
+						<p>Consulting on passive design, solar integration, and low-energy operation.</p>
+					</div>
+				</div>
+				<!-- New Service 5 -->
+				<div data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine" class="col-md-4 mb-4">
+					<div class="text-center p-3">
+						<i class="fas fa-home fa-2x mb-3 text-primary"></i>
+						<h5>Smart Home Integration</h5>
+						<p>Seamlessly integrate automation, security, and entertainment systems into your modular home.</p>
+					</div>
+				</div>
+				<!-- New Service 6 -->
+				<div data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine" class="col-md-4 mb-4">
+					<div class="text-center p-3">
+						<i class="fas fa-cogs fa-2x mb-3 text-primary"></i>
+						<h5>Customization Options</h5>
+						<p>Choose bespoke layouts, finishes, and features tailored to your lifestyle and needs.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- About Section -->
+	<section data-aos="fade-up" id="about" class="py-5 ">
+		<div class="container">
+			<h2 class="section-title mb-3" data-i18n="about.headingMain">Our Story</h2>
+			<div class="row">
+				<div class="col-lg-4 mb-4">
+					<p data-i18n="about.paragraph1"></p>
+				</div>
+				<div class="col-lg-4 mb-4">
+					<p data-i18n="about.paragraph2"></p>
+				</div>
+				<div class="col-lg-4 mb-4">
+					<p data-i18n="about.paragraph3"></p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Constructions -->
+	<section data-aos="fade-left" id="constructions" class="py-5">
 		<div class="container text-center">
-			<div class="row justify-content-center">
-				<div class="col-lg-10">
-					<h1 class="archivo-black-regular">BiteLux</h1>
-					<p class="hero-p">
-						Premium ingredients for premium meals at home!
-					</p>
-					<button class="shop-button-pushable shop-button" role="button">
-						<span class="shop-button-shadow"></span>
-						<span class="shop-button-edge"></span>
-						<span class="shop-button-front text"> SHOP NOW </span>
-					</button>
+			<!-- Title + subtitle -->
+			<h2 class="section-title mb-2" data-i18n="constructions.title">Constructions</h2>
+			<p class="section-subtitle mb-4">
+				Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit
+			</p>
+			<!-- Cards grid -->
+			<div class="row">
+				<!-- Card 1 -->
+				<div class="col-md-6 mb-4">
+					<div class="card construction-card h-100 border-0">
+						<div class="row no-gutters h-100">
+							<div class="col-5">
+								<img src="./media/placeholder_3.png" alt="" class="img-fluid h-100 w-100 object-fit-cover">
+							</div>
+							<div class="col-7 d-flex flex-column justify-content-center p-4 text-left">
+								<h5 data-i18n="constructions.item1.title">Residential Homes</h5>
+								<p data-i18n="constructions.item1.desc">
+									Spacious family houses with flexible floor plans and premium finishes.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Card 2 -->
+				<div class="col-md-6 mb-4">
+					<div class="card construction-card h-100 border-0">
+						<div class="row no-gutters h-100">
+							<div class="col-5">
+								<img src="./media/placeholder_4.png" alt="" class="img-fluid h-100 w-100 object-fit-cover">
+							</div>
+							<div class="col-7 d-flex flex-column justify-content-center p-4 text-left">
+								<h5 data-i18n="constructions.item2.title">Tiny Cabins</h5>
+								<p data-i18n="constructions.item2.desc">
+									Compact living solutions—ideal as guest houses, studios, or holiday rentals.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Card 3 -->
+				<div class="col-md-6 mb-4">
+					<div class="card construction-card h-100 border-0">
+						<div class="row no-gutters h-100">
+							<div class="col-5">
+								<img src="./media/placeholder_5.png" alt="" class="img-fluid h-100 w-100 object-fit-cover">
+							</div>
+							<div class="col-7 d-flex flex-column justify-content-center p-4 text-left">
+								<h5 data-i18n="constructions.item3.title">Beach Retreats</h5>
+								<p data-i18n="constructions.item3.desc">
+									Lightweight, hurricane-resistant designs perfect for coastal getaways.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Card 4 -->
+				<div class="col-md-6 mb-4">
+					<div class="card construction-card h-100 border-0">
+						<div class="row no-gutters h-100">
+							<div class="col-5">
+								<img src="./media/placeholder_2.jpg" alt="" class="img-fluid h-100 w-100 object-fit-cover">
+							</div>
+							<div class="col-7 d-flex flex-column justify-content-center p-4 text-left">
+								<h5 data-i18n="constructions.item4.title">Eco Villas</h5>
+								<p data-i18n="constructions.item4.desc">
+									High-end prefabs with smart-home features, solar power, and green roofs.
+								</p>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</section>
-	<!-- Pop-up -->
-	<div class="popup-form-overlay" id="popupForm">
-		<div class="popup-form">
-			<span class="close-popup">&times;</span>
-			<h3>Service still not available</h3>
-			<p>Enter your email to get the news when it's ready:</p>
-			<form id="subscriptionForm" action="#" method="POST">
-				<input
-					type="email"
-					id="emailInput"
-					name="email"
-					placeholder="Your email address"
-					required
-				/>
-				<button type="submit" class="subscribe-button">Subscribe</button>
-			</form>
+
+	<!-- Projects Gallery -->
+	<section id="projects" class="py-5">
+		<div class="container text-center">
+			<!-- Section heading with decorative lines -->
+			<h2 class="section-title mb-2" data-i18n="projects.title">Projects</h2>
+			<p class="section-subtitle mb-4">Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur
+				velit
+			</p>
+
+			<!-- Tabs -->
+			<ul class="nav nav-pills justify-content-center mb-4" id="projectsTab" role="tablist">
+				<li class="nav-item"><a class="nav-link active" data-toggle="pill" href="#all" role="tab"
+						data-i18n="projects.filter.all">All</a></li>
+				<li class="nav-item"><a class="nav-link" data-toggle="pill" href="#remodeling" role="tab"
+						data-i18n="projects.filter.remodeling">Remodeling</a></li>
+				<li class="nav-item"><a class="nav-link" data-toggle="pill" href="#construction" role="tab"
+						data-i18n="projects.filter.construction">Construction</a></li>
+				<li class="nav-item"><a class="nav-link" data-toggle="pill" href="#repairs" role="tab"
+						data-i18n="projects.filter.repairs">Repairs</a></li>
+				<li class="nav-item"><a class="nav-link" data-toggle="pill" href="#design" role="tab"
+						data-i18n="projects.filter.design">Design</a></li>
+			</ul>
+
+			<!-- Tab Panes + Grid -->
+			<div class="tab-content">
+				<!-- All -->
+				<div class="tab-pane fade show active" id="all" role="tabpanel">
+					<div class="row">
+						<!-- repeat placeholders -->
+						<div class="col-lg-4 col-md-6 mb-4"><img src="./media/placeholder_1.jpg" class="img-fluid rounded" alt="">
+						</div>
+						<div class="col-lg-4 col-md-6 mb-4"><img src="./media/placeholder_2.jpg" class="img-fluid rounded" alt="">
+						</div>
+						<div class="col-lg-4 col-md-6 mb-4"><img src="./media/placeholder_1.jpg" class="img-fluid rounded" alt="">
+						</div>
+						<div class="col-lg-4 col-md-6 mb-4"><img src="./media/placeholder_2.jpg" class="img-fluid rounded" alt="">
+						</div>
+						<div class="col-lg-4 col-md-6 mb-4"><img src="./media/placeholder_1.jpg" class="img-fluid rounded" alt="">
+						</div>
+						<div class="col-lg-4 col-md-6 mb-4"><img src="./media/placeholder_2.jpg" class="img-fluid rounded" alt="">
+						</div>
+					</div>
+				</div>
+				<!-- You can duplicate the above <div class="row"> for each category,
+							 swapping in the images or filtering logic as desired. -->
+			</div>
 		</div>
-	</div>
-	<!-- PRICING SECTION -->
-  <section class="pricing-section" id="pricing-section">
-    <h2 class="pricing-heading">Our Plans</h2>
-    <div class="pricing-cards-container">
-      
-      <!-- Pricing Card 1 -->
-      <div class="pricing-card">
-        <div class="pricing-header">
-          <h3 class="pricing-tier">Pre-Cooked Meals</h3>
-          <div class="pricing-cost">
-            <span class="currency">$</span>
-            <span class="amount">49</span>
-            <span class="frequency">/month</span>
-          </div>
-        </div>
-        <div class="pricing-body">
-          <ul class="feature-list">
-            <li><i class="fa fa-check"></i> Ready in under 5 mins</li>
-            <li><i class="fa fa-check"></i> Wide variety of cuisines</li>
-            <li><i class="fa fa-check"></i> Nutritionist-approved recipes</li>
-            <li><i class="fa fa-check"></i> 24/7 customer support</li>
-          </ul>
-          <button class="btn-trial">Start your trial</button>
-        </div>
-      </div>
-      <!-- End Pricing Card 1 -->
-  
-      <!-- Pricing Card 2 -->
-      <div class="pricing-card">
-        <div class="pricing-header">
-          <h3 class="pricing-tier">Fresh Ingredients</h3>
-          <div class="pricing-cost">
-            <span class="currency">$</span>
-            <span class="amount">79</span>
-            <span class="frequency">/month</span>
-          </div>
-        </div>
-        <div class="pricing-body">
-          <ul class="feature-list">
-            <li><i class="fa fa-check"></i> Farm-to-table produce</li>
-            <li><i class="fa fa-check"></i> Choose organic or regular</li>
-            <li><i class="fa fa-check"></i> Seasonal variety included</li>
-            <li><i class="fa fa-check"></i> Free recipe guides</li>
-          </ul>
-          <button class="btn-trial">Start your trial</button>
-        </div>
-      </div>
-      <!-- End Pricing Card 2 -->
-  
-      <!-- Pricing Card 3 -->
-      <div class="pricing-card">
-        <div class="pricing-header">
-          <h3 class="pricing-tier">Prepare Your Own</h3>
-          <div class="pricing-cost">
-            <span class="currency">$</span>
-            <span class="amount">99</span>
-            <span class="frequency">/month</span>
-          </div>
-        </div>
-        <div class="pricing-body">
-          <ul class="feature-list">
-            <li><i class="fa fa-check"></i> Weekly kitchen kit delivery</li>
-            <li><i class="fa fa-check"></i> Chef-led video tutorials</li>
-            <li><i class="fa fa-check"></i> Access to premium spices</li>
-            <li><i class="fa fa-check"></i> Live support from experts</li>
-            <li><i class="fa fa-check"></i> Bonus recipe eBook</li>
-          </ul>
-          <button class="btn-trial">Start your trial</button>
-        </div>
-      </div>
-      <!-- End Pricing Card 3 -->
-  
-    </div>
-  </section>
-	<!-- About Us -->
-	<section
-		class="about-us-section py-5 animated-section"
-		id="about-us-section"
-	>
+	</section>
+
+	<!-- Benefits Section -->
+	<section id="benefits" class="py-5 bg-light" data-aos="fade-up">
+		<div class="container">
+
+			<h2 class="section-title text-center mb-4" data-i18n="benefits.title">
+				Why Build Step-by-Step?
+			</h2>
+
+			<div class="row">
+				<!-- Item 1 -->
+				<div class="col-12 mb-4">
+					<h5 data-i18n="benefits.item1.title">Financial Flexibility</h5>
+					<p data-i18n="benefits.item1.desc">
+						Rather than pre-paying a single turn-key contractor for the entire project, spreading your build out lets
+						you manage your cashflow in stages. You start with foundation and shell assembly, then pause to reorder
+						funds or renegotiate financing before moving on to interiors. An unfinished—but existing—structure holds far
+						more borrowing power than “just an idea.”
+					</p>
+				</div>
+
+				<!-- Item 2 -->
+				<div class="col-12 mb-4">
+					<h5 data-i18n="benefits.item2.title">Cost Efficiency</h5>
+					<p data-i18n="benefits.item2.desc">
+						Turn-key packages carry hidden markups at every subcontract—design, site prep, utilities, finishes. By
+						sourcing each step yourself, you choose the best bidder and control quality. Even better: tackle smaller
+						tasks yourself to save on labor costs, and re-use or repurpose materials for an even leaner build.
+					</p>
+				</div>
+
+				<!-- Item 3 -->
+				<div class="col-12 mb-4">
+					<h5 data-i18n="benefits.item3.title">Quality & Specialization</h5>
+					<p data-i18n="benefits.item3.desc">
+						“Jack-of-all-trades” contractors can’t match the expertise of a dedicated prefab panel or roof-truss
+						manufacturer. We’ve mastered our production with advanced CAD/CAM tooling and precision controls—so you know
+						every wall, beam and connector is up to spec. Likewise, hiring specialist electricians, plumbers and
+						landscapers means every trade delivers its best work.
+					</p>
+				</div>
+
+				<!-- Item 4 -->
+				<div class="col-12 mb-4">
+					<h5 data-i18n="benefits.item4.title">Owner Control & Customization</h5>
+					<p data-i18n="benefits.item4.desc">
+						You’re the ultimate project manager. Inspect foundation levels before assembly, photograph MEP rough-ins
+						before drywall and confirm roof ties before insulation goes in. And when it comes to layout or finishes—flip
+						floor plans, enlarge openings or mix your own trim palette. Building bit by bit means your home truly
+						reflects your vision.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Statistics Section -->
+	<section id="stats" class="py-5">
+		<div class="container text-center">
+			<div class="row align-items-stretch">
+				<!-- Card 1 -->
+				<div class="col-md-3 mb-4 d-flex">
+					<div class="stat-card d-flex flex-column justify-content-center flex-fill p-4">
+						<i class="fas fa-smile fa-3x mb-3 text-primary"></i>
+						<!-- PureCounter span -->
+						<span class="purecounter display-4 mb-2" data-purecounter-start="0" data-purecounter-end="232"
+							data-purecounter-duration="1">
+						</span>
+						<p data-i18n="stats.clients_label">Happy Clients</p>
+					</div>
+				</div>
+
+				<!-- Card 2 -->
+				<div class="col-md-3 mb-4 d-flex">
+					<div class="stat-card d-flex flex-column justify-content-center flex-fill p-4">
+						<i class="fas fa-project-diagram fa-3x mb-3 text-warning"></i>
+						<span class="purecounter display-4 mb-2" data-purecounter-start="0" data-purecounter-end="521"
+							data-purecounter-duration="1">
+						</span>
+						<p data-i18n="stats.projects_label">Projects</p>
+					</div>
+				</div>
+
+				<!-- Card 3 -->
+				<div class="col-md-3 mb-4 d-flex">
+					<div class="stat-card d-flex flex-column justify-content-center flex-fill p-4">
+						<i class="fas fa-headset fa-3x mb-3 text-success"></i>
+						<span class="purecounter display-4 mb-2" data-purecounter-start="0" data-purecounter-end="1463"
+							data-purecounter-duration="1">
+						</span>
+						<p data-i18n="stats.support_label">Hours Of Support</p>
+					</div>
+				</div>
+
+				<!-- Card 4 -->
+				<div class="col-md-3 mb-4 d-flex">
+					<div class="stat-card d-flex flex-column justify-content-center flex-fill p-4">
+						<i class="fas fa-users fa-3x mb-3 text-danger"></i>
+						<span class="purecounter display-4 mb-2" data-purecounter-start="0" data-purecounter-end="15"
+							data-purecounter-duration="1">
+						</span>
+						<p data-i18n="stats.workers_label">Hard Workers</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Contact Section -->
+	<section id="contact" class="py-5">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-8 mx-auto text-center">
-					<h2 class="mb-4">About Us</h2>
-					<p>
-						At BiteLux, we believe that exceptional dining experiences shouldn’t be limited to restaurants. That’s why we deliver premium, hand-selected ingredients and chef-crafted, ready-to-enjoy meals straight to your doorstep. Our mission is to bring the art of fine dining into the comfort of your home, making every meal a celebration of flavor and quality. Each dish is carefully curated by our culinary experts, ensuring restaurant-level taste and presentation with minimal effort from you. Whether you’re hosting a dinner party or simply treating yourself, BiteLux offers a seamless way to elevate your everyday meals. With an unwavering commitment to quality, sustainability, and convenience, we transform the way you experience food at home. Let us redefine your idea of home dining—one extraordinary bite at a time.
-					</p>
+				<!-- Info Cards Column -->
+				<div class="col-lg-6 mb-4 d-flex flex-column">
+					<!-- Address Card -->
+					<div class="card mb-4 shadow-sm border-0 flex-fill">
+						<div class="card-body text-center">
+							<i class="fas fa-map-marker-alt fa-2x text-primary mb-3"></i>
+							<h5>Address</h5>
+							<p class="mb-0">A108 Adam Street</p>
+							<p class="mb-0"> New York</p>
+							<p class="mb-0"> NY 535022</p>
+						</div>
+					</div>
+					<!-- Call & Email Row -->
+					<div class="row">
+						<!-- Call Us -->
+						<div class="col-sm-6 d-flex">
+							<div class="card mb-4 shadow-sm border-0 flex-fill">
+								<div class="card-body text-center">
+									<i class="fas fa-phone fa-2x text-primary mb-3"></i>
+									<h5>Call Us</h5>
+									<p>+1 5589 55488 55</p>
+								</div>
+							</div>
+						</div>
+						<!-- Email Us -->
+						<div class="col-sm-6 d-flex">
+							<div class="card mb-4 shadow-sm border-0 flex-fill">
+								<div class="card-body text-center">
+									<i class="fas fa-envelope fa-2x text-primary mb-3"></i>
+									<h5>Email Us</h5>
+									<p>info@example.com</p>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
-			</div>
-		</div>
-	</section>
 
-	<!-- Cards -->
-	<section class="cards-section">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-4 mb-4">
-					<div class="card animated-card">
-						<img
-							src="./media/stake.jpeg"
-							class="card-img-top"
-							alt="Card Image"
-						/>
-						<div class="card-body" id="animated-card-1">
-							<h5 class="card-title">Prepare Your Own</h5>
-							<p class="card-text">
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-								do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-								Ut enim ad minim veniam, quis nostrud exercitation ullamco
-								laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-								irure dolor in reprehenderit in voluptate velit esse cillum
-								dolore eu fugiat nulla pariatur.
-							</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 mb-4">
-					<div class="card animated-card">
-						<img
-							src="./media/beef_well.jpeg"
-							class="card-img-top"
-							alt="Card Image"
-						/>
-						<div class="card-body" id="animated-card-2">
-							<h5 class="card-title">Pre-cooked meals</h5>
-							<p class="card-text">
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-								do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-								Ut enim ad minim veniam, quis nostrud exercitation ullamco
-								laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-								irure dolor in reprehenderit in voluptate velit esse cillum
-								dolore eu fugiat nulla pariatur.
-							</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 mb-4">
-					<div class="card animated-card">
-						<img
-							src="./media/food_hero.jpeg"
-							class="card-img-top"
-							alt="Card Image"
-						/>
-						<div class="card-body" id="animated-card-3">
-							<h5 class="card-title">Fresh Ingredients</h5>
-							<p class="card-text">
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-								do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-								Ut enim ad minim veniam, quis nostrud exercitation ullamco
-								laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-								irure dolor in reprehenderit in voluptate velit esse cillum
-								dolore eu fugiat nulla pariatur.
-							</p>
+				<!-- Form Column -->
+				<div class="col-lg-6 mb-5 d-flex">
+					<div class="card shadow-sm border-0 flex-fill">
+						<div class="card-body">
+							<form id="contactForm" novalidate>
+								<div class="form-row">
+									<div class="form-group col-md-6">
+										<input type="text" id="name" class="form-control" placeholder="Your Name" required>
+										<div class="invalid-feedback">Please enter your name.</div>
+									</div>
+									<div class="form-group col-md-6">
+										<input type="email" id="email" class="form-control" placeholder="Your Email" required>
+										<div class="invalid-feedback">Please enter a valid email.</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<input type="text" id="subject" class="form-control" placeholder="Subject" required>
+									<div class="invalid-feedback">Please enter a subject.</div>
+								</div>
+								<div class="form-group">
+									<textarea id="message" class="form-control" rows="10" placeholder="Message" required></textarea>
+									<div class="invalid-feedback">Please enter your message.</div>
+								</div>
+								<button type="submit" class="btn btn-primary btn-block">
+									Send Message
+								</button>
+							</form>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</section>
-	
-	<!-- Shop -->
-<section class="shop-section py-5" id="shop-section">
-  <div class="container">
-    <div class="row" id="shopRow">
-    </div>
-  </div>
-</section>
 
-	<!-- Footer -->
-	<footer class="footer text-white" id="footer">
-		<div class="container">
-			<div class="row align-items-center">
-				<div class="col-12 mt-3">
-					<a
-						href="https://www.facebook.com/"
-						title="Facebook"
-						class="social-icon"
-						><i
-							class="fa-brands fa-square-facebook fa-xl"
-							style="color: #74c0fc"
-						></i
-					></a>
-					<a href="https://x.com" title="Twitter" class="social-icon"
-						><i class="fa-brands fa-square-x-twitter fa-xl"></i
-					></a>
-					<a
-						href="https://www.instagram.com/"
-						title="Instagram"
-						class="social-icon"
-						><i
-							class="fa-brands fa-square-instagram fa-xl"
-							style="color: #c729b2"
-						></i
-					></a>
-				</div>
-				<div class="col-12 mt-3">
-					<p>&copy; 2024. All Rights Reserved.</p>
+		<!-- Footer -->
+		<footer class="pt-4 pb-4">
+			<div class="container">
+
+				<div class="row align-items-center">
+					<!-- Left: Company Info -->
+					<div class="col-md-6 text-md-left text-center mt-4 mb-md-0">
+						<p>Developed by Karla Lenard</p>
+						<p>2025</p>
+					</div>
+					<!-- Right: Social Icons -->
+					<div class="col-md-6 text-md-right text-center">
+						<a href="#" class="btn-icon mr-2"><i class="fab fa-twitter"></i></a>
+						<a href="#" class="btn-icon mr-2"><i class="fab fa-facebook-f"></i></a>
+						<a href="#" class="btn-icon mr-2"><i class="fab fa-instagram"></i></a>
+						<a href="#" class="btn-icon"><i class="fab fa-linkedin-in"></i></a>
+					</div>
 				</div>
 			</div>
-		</div>
-	</footer>
+		</footer>
 
-	<script
-		src="https://kit.fontawesome.com/39c7bbdf94.js"
-		crossorigin="anonymous"
-	></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-	<script src="scripts.js"></script>
+
+		<!-- Scripts -->
+		<script src="https://cdn.jsdelivr.net/npm/@srexi/purecounterjs/dist/purecounter_vanilla.js"></script>
+		<script>
+			new PureCounter();
+		</script>
 </body>
+
+</html>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+	new PureCounter();
+	AOS.init({
+		duration: 800,    // animation duration in ms
+		once: true        // whether animation should happen only once
+	});
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- i18next -->
+<script src="https://unpkg.com/i18next@21.6.7/dist/umd/i18next.min.js"></script>
+<script src="https://unpkg.com/jquery-i18next@1.2.1/dist/umd/jquery-i18next.min.js"></script>
+<script src="scripts.js"></script>
+</body>
+
 </html>
