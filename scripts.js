@@ -27,8 +27,7 @@ const resources = {
       },
       features: {
         headingSmall: "Features",
-        headingMain: "Why choose Modular Homes?",
-        subheading: "Discover the advantages of eco-friendly, fast-built modular living.",
+        headingMain: "Why modular?",
         card1: {
           title: "Rapid Construction",
           desc: "Modular homes go from factory floor to finished site in as little as 3–4 weeks."
