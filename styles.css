@@ -34,6 +34,10 @@ body {
     color: var(--tertiary-color);
     background: var(--secondary-color);
     scroll-behavior: smooth;
+    max-width: 100%;
+    overflow-x: hidden;
+    overscroll-behavior-x: none;
+    touch-action: pan-y;
 }
 
 /* Headings & nav links */
