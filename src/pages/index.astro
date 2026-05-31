@@ -1,0 +1,380 @@
+---
+import "../styles/global.css";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+			<meta
+				name="description"
+				data-i18n-content="meta.description"
+				content="Thoughtfully designed modular homes, built with precision and delivered in weeks."
+			/>
+		<title>Modular Homes | Built for life</title>
+		<link rel="icon" type="image/svg+xml" href="/media/icon.svg" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Cal+Sans&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Montserrat:wght@400;500;600;700&display=swap"
+			rel="stylesheet"
+		/>
+	</head>
+
+	<body>
+		<header class="hero-wrap" id="home">
+			<div class="hero-card">
+				<img
+					class="hero-image"
+					src="/media/generated/hero-forest.jpg"
+						alt="Contemporary dark timber modular home in a forest clearing"
+						data-i18n-alt="images.hero"
+					/>
+				<div class="hero-overlay"></div>
+
+				<div class="hero-topbar">
+					<a class="brand brand-light" href="#home" aria-label="Modular Homes home" data-i18n-aria-label="brandHome">
+						<span class="brand-mark">✳</span>
+						<span data-i18n="brand">Modular Homes</span>
+					</a>
+					<button
+						class="menu-toggle"
+						type="button"
+						aria-expanded="false"
+						aria-controls="hero-menu"
+						aria-label="Open menu"
+						data-menu-toggle
+					>
+						<span></span>
+						<span></span>
+						<span></span>
+					</button>
+					<div class="hero-controls" id="hero-menu">
+						<nav class="hero-nav" aria-label="Primary navigation" data-i18n-aria-label="nav.aria">
+							<a href="#about" data-i18n="nav.about">About</a>
+							<a href="#process" data-i18n="nav.process">Process</a>
+							<a href="#projects" data-i18n="nav.projects">Projects</a>
+							<a href="#benefits" data-i18n="nav.benefits">Benefits</a>
+							<a class="nav-cta" href="#contact" data-i18n="nav.startProject">Start a project</a>
+						</nav>
+						<div class="language-switcher language-switcher-desktop" aria-label="Language" data-i18n-aria-label="language.aria">
+							<button class="is-active" type="button" data-language="en" aria-pressed="true">EN</button>
+							<span aria-hidden="true">/</span>
+							<button type="button" data-language="hr" aria-pressed="false">HR</button>
+						</div>
+					</div>
+				</div>
+
+				<div class="hero-copy">
+					<p class="eyebrow eyebrow-light" data-i18n="hero.eyebrow">Precision-built modular homes</p>
+					<h1>
+						<span data-i18n="hero.title">Naturally considered homes,</span>
+						<span class="title-accent" data-i18n="hero.titleAccent">made for living.</span>
+					</h1>
+					<p class="hero-lead" data-i18n="hero.lead">
+						From first sketch to finished space, we create calm, sustainable homes that
+						arrive in weeks, not months.
+					</p>
+					<div class="language-switcher language-switcher-mobile" aria-label="Language" data-i18n-aria-label="language.aria">
+						<button class="is-active" type="button" data-language="en" aria-pressed="true">EN</button>
+						<span aria-hidden="true">/</span>
+						<button type="button" data-language="hr" aria-pressed="false">HR</button>
+					</div>
+				</div>
+				</div>
+			</header>
+
+		<main>
+			<section class="intro section" id="about">
+				<div class="container">
+					<div class="intro-heading">
+						<p class="eyebrow" data-i18n="about.eyebrow">/ About us</p>
+						<h2 data-i18n="about.title">Building a home should feel as clear as the space itself.</h2>
+					</div>
+
+					<div class="story-grid">
+						<div class="story-copy">
+							<p data-i18n="about.paragraph1">
+								We design modular homes where simplicity and performance are inseparable.
+								Every decision is shaped by how the space will feel, age and adapt to
+								everyday life.
+							</p>
+							<p data-i18n="about.paragraph2">
+								Our homes are manufactured in controlled conditions, then assembled on
+								site with less disruption, less waste and a more predictable path to
+								moving day.
+							</p>
+							<a class="text-link" href="#benefits"><span data-i18n="about.link">Why modular</span> <span>↗</span></a>
+						</div>
+
+						<figure class="story-small-image">
+							<img
+								src="/media/generated/forest-studio.jpg"
+								alt="Small modular garden studio among trees at dusk"
+								data-i18n-alt="images.forestStudio"
+							/>
+						</figure>
+
+						<figure class="story-main-image">
+							<img
+								src="/media/generated/terrace-detail.jpg"
+								alt="Warm covered terrace and interior of a modular home"
+								data-i18n-alt="images.terrace"
+							/>
+						</figure>
+					</div>
+				</div>
+			</section>
+
+			<section class="values section" id="benefits">
+				<div class="container">
+					<div class="section-heading section-heading-split">
+						<div>
+							<p class="eyebrow eyebrow-light" data-i18n="benefits.eyebrow">/ Why modular</p>
+							<h2><span data-i18n="benefits.title">More control.</span><br /><span class="title-accent" data-i18n="benefits.titleAccent">Less compromise.</span></h2>
+						</div>
+						<p data-i18n="benefits.lead">
+							A considered way to build: practical, efficient and grounded in the
+							qualities that make a house feel like home.
+						</p>
+					</div>
+
+					<div class="value-grid">
+							<article class="value-card">
+								<p class="card-number">01</p>
+								<h3 data-i18n="benefits.cards.0.title">Faster by design</h3>
+								<p data-i18n="benefits.cards.0.body">
+									Factory production and site preparation happen in parallel, trimming
+									months from a conventional build.
+							</p>
+						</article>
+							<article class="value-card">
+								<p class="card-number">02</p>
+								<h3 data-i18n="benefits.cards.1.title">Built with precision</h3>
+								<p data-i18n="benefits.cards.1.body">
+									Controlled conditions mean consistent details, fewer surprises and a
+									cleaner construction site.
+							</p>
+						</article>
+							<article class="value-card">
+								<p class="card-number">03</p>
+								<h3 data-i18n="benefits.cards.2.title">Lighter footprint</h3>
+								<p data-i18n="benefits.cards.2.body">
+									Smarter material use, efficient envelopes and less on-site waste reduce
+									the impact of every home.
+							</p>
+						</article>
+					</div>
+				</div>
+			</section>
+
+			<section class="process section" id="process">
+				<div class="container">
+					<div class="process-intro">
+						<p class="eyebrow" data-i18n="process.eyebrow">/ How it works</p>
+						<h2 data-i18n="process.title">A clear process, from the first idea to your front door.</h2>
+					</div>
+
+					<div class="process-grid">
+						<article class="process-card">
+							<img
+								src="/media/generated/meadow-home.jpg"
+								alt="Timber modular family home in a meadow"
+								data-i18n-alt="images.meadowHome"
+							/>
+							<p class="process-number">01</p>
+							<h3 data-i18n="process.cards.0.title">Shape the brief</h3>
+							<p data-i18n="process.cards.0.body">
+								We start with your site, budget and daily rhythms to create a home that
+								fits naturally into your life.
+							</p>
+							<a class="text-link" href="#contact"><span data-i18n="process.cards.0.link">Start a conversation</span> <span>↗</span></a>
+						</article>
+
+						<article class="process-card">
+							<img
+								src="/media/generated/assembly-site.jpg"
+								alt="Timber wall module being installed on a prepared foundation"
+								data-i18n-alt="images.assembly"
+							/>
+							<p class="process-number">02</p>
+							<h3 data-i18n="process.cards.1.title">Build with precision</h3>
+							<p data-i18n="process.cards.1.body">
+								Your home is crafted off site while groundwork is prepared, with every
+								detail checked before delivery.
+							</p>
+							<a class="text-link" href="#contact"><span data-i18n="process.cards.1.link">Explore the process</span> <span>↗</span></a>
+						</article>
+
+						<article class="process-card">
+							<img
+								src="/media/generated/courtyard-home.jpg"
+								alt="Completed green modular courtyard home with an olive tree"
+								data-i18n-alt="images.courtyard"
+							/>
+							<p class="process-number">03</p>
+							<h3 data-i18n="process.cards.2.title">Settle in sooner</h3>
+							<p data-i18n="process.cards.2.body">
+								Modules arrive ready for a focused on-site assembly, so the final steps
+								feel organized and predictable.
+							</p>
+							<a class="text-link" href="#contact"><span data-i18n="process.cards.2.link">Plan your home</span> <span>↗</span></a>
+						</article>
+					</div>
+				</div>
+			</section>
+
+			<section class="projects section" id="projects">
+				<div class="container">
+					<div class="section-heading section-heading-split projects-heading">
+						<div>
+							<p class="eyebrow" data-i18n="projects.eyebrow">/ Selected homes</p>
+							<h2 data-i18n="projects.title">Spaces with a quieter kind of confidence.</h2>
+						</div>
+						<a class="button button-dark" href="#contact"><span data-i18n="projects.link">Discuss your project</span> <span>↗</span></a>
+					</div>
+
+					<div class="projects-grid">
+							<article class="project-card project-card-large">
+								<img src="/media/generated/lake-cabin.jpg" alt="Compact timber modular cabin by a lake" data-i18n-alt="images.lakeCabin" />
+								<div class="project-meta">
+									<div>
+										<p data-i18n="projects.cards.0.title">Lake cabin</p>
+										<span data-i18n="projects.cards.0.meta">Compact retreat / 42 m²</span>
+								</div>
+								<span class="project-arrow">↗</span>
+							</div>
+						</article>
+
+						<article class="project-card">
+							<img
+									src="/media/generated/coastal-villa.jpg"
+									alt="Pale modular villa overlooking the Adriatic coast"
+									data-i18n-alt="images.coastalVilla"
+								/>
+								<div class="project-meta">
+									<div>
+										<p data-i18n="projects.cards.1.title">Coastal home</p>
+										<span data-i18n="projects.cards.1.meta">Family villa / 118 m²</span>
+								</div>
+								<span class="project-arrow">↗</span>
+							</div>
+						</article>
+
+						<article class="project-card">
+							<img
+									src="/media/generated/forest-studio.jpg"
+									alt="Dark timber modular studio in a wooded garden"
+									data-i18n-alt="images.forestStudioProject"
+								/>
+								<div class="project-meta">
+									<div>
+										<p data-i18n="projects.cards.2.title">Forest studio</p>
+										<span data-i18n="projects.cards.2.meta">Garden room / 24 m²</span>
+								</div>
+								<span class="project-arrow">↗</span>
+							</div>
+						</article>
+
+						<article class="project-card project-card-wide">
+							<img
+									src="/media/generated/hero-forest.jpg"
+									alt="Dark timber modular home with large windows in a forest clearing"
+									data-i18n-alt="images.woodlandPavilion"
+								/>
+								<div class="project-meta">
+									<div>
+										<p data-i18n="projects.cards.3.title">Woodland pavilion</p>
+										<span data-i18n="projects.cards.3.meta">Two-bedroom home / 96 m²</span>
+								</div>
+								<span class="project-arrow">↗</span>
+							</div>
+						</article>
+					</div>
+				</div>
+			</section>
+
+			<section class="statement section">
+				<div class="container">
+					<div class="statement-card">
+						<p class="eyebrow eyebrow-light" data-i18n="statement.eyebrow">/ A better way to build</p>
+						<h2 data-i18n="statement.title">
+							“Thoughtful architecture, controlled construction and a home that feels
+							entirely your own.”
+						</h2>
+
+						<div class="stats-grid">
+							<div>
+								<strong>3–4</strong>
+								<span data-i18n="statement.stats.0">weeks for on-site assembly</span>
+							</div>
+							<div>
+								<strong>30%</strong>
+								<span data-i18n="statement.stats.1">less material waste</span>
+							</div>
+							<div>
+								<strong>A+</strong>
+								<span data-i18n="statement.stats.2">energy-conscious envelope</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="contact section" id="contact">
+				<div class="container contact-grid">
+					<div class="contact-copy">
+						<p class="eyebrow" data-i18n="contact.eyebrow">/ Let's collaborate</p>
+						<h2 data-i18n="contact.title">Ready to make space for what matters?</h2>
+						<p data-i18n="contact.lead">
+							Tell us where you want to build and how you want to live. We will help turn
+							that first idea into a clear plan.
+						</p>
+						<div class="contact-actions">
+							<a class="button button-accent" href="mailto:hello@modular">
+								<span data-i18n="contact.emailAction">Send an enquiry</span> <span>↗</span>
+							</a>
+							<button class="button button-outline" type="button" data-i18n="contact.callAction">Book a call</button>
+						</div>
+						<div class="contact-details">
+							<p><span>Email</span> hello@modular</p>
+							<p><span data-i18n="contact.studioLabel">Studio</span> <span class="contact-detail-value" data-i18n="contact.studioLocation">Zagreb, Croatia</span></p>
+						</div>
+					</div>
+
+					<img
+						class="contact-image"
+						src="/media/generated/coastal-villa.jpg"
+						alt="Modular villa set into a Mediterranean coastal landscape"
+						data-i18n-alt="images.contact"
+					/>
+				</div>
+			</section>
+		</main>
+
+		<footer>
+			<div class="container footer-grid">
+				<div>
+					<a class="brand brand-light" href="#home">
+						<span class="brand-mark">✳</span>
+						<span data-i18n="brand">Modular Homes</span>
+					</a>
+					<p data-i18n="footer.tagline">Calm spaces. Precise construction.</p>
+				</div>
+				<div class="footer-links">
+					<a href="#about" data-i18n="nav.about">About</a>
+					<a href="#process" data-i18n="nav.process">Process</a>
+					<a href="#projects" data-i18n="nav.projects">Projects</a>
+					<a href="#contact" data-i18n="nav.contact">Contact</a>
+				</div>
+				<p class="footer-copy" data-i18n="footer.copyright">© 2026 Horizon</p>
+			</div>
+		</footer>
+		<button class="back-to-top" type="button" aria-label="Back to top" data-back-to-top data-i18n-aria-label="backToTop">
+			<span aria-hidden="true">↑</span>
+			<span data-i18n="backToTop">Back to top</span>
+		</button>
+		<script is:inline src="/i18n.js"></script>
+	</body>
+</html>
