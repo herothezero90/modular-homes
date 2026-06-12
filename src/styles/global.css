@@ -180,9 +180,13 @@ h3 {
 
 .brand-mark {
 	color: var(--terracotta);
-	font-family: Arial, sans-serif;
-	font-size: 1.25rem;
-	line-height: 1;
+	flex: 0 0 auto;
+	height: 1.15rem;
+	overflow: visible;
+	stroke: currentColor;
+	stroke-linecap: round;
+	stroke-width: 2.4;
+	width: 1.15rem;
 }
 
 .brand-light {
@@ -199,8 +203,8 @@ h3 {
 	background: var(--forest);
 	border-radius: var(--radius-large);
 	display: flex;
+	height: calc(100dvh - 40px);
 	justify-content: center;
-	min-height: min(880px, calc(100vh - 40px));
 	overflow: hidden;
 	position: relative;
 }
@@ -214,7 +218,9 @@ h3 {
 }
 
 .hero-image {
+	backface-visibility: hidden;
 	object-fit: cover;
+	will-change: transform;
 }
 
 .has-scroll-animations .hero-card {
@@ -432,19 +438,22 @@ h3 {
 	width: 100%;
 }
 
-.hero-image,
 .story-small-image img,
 .story-main-image img,
 .process-card img,
 .project-card img,
 .contact-image,
 .project-modal-image-wrap img {
+	backface-visibility: hidden;
 	scale: 1;
-	transition: scale 700ms cubic-bezier(0.22, 1, 0.36, 1);
+	transition: scale 850ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-animation="image-parallax"] img {
+	will-change: transform, scale;
 }
 
 @media (hover: hover) {
-	.hero-card:hover .hero-image,
 	.story-small-image:hover img,
 	.story-main-image:hover img,
 	.process-card:hover img,
@@ -1418,7 +1427,7 @@ body.modal-open {
 	}
 
 	.hero-card {
-		min-height: calc(100vh - 24px);
+		height: calc(100dvh - 24px);
 	}
 
 	.hero-topbar {

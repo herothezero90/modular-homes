@@ -2,11 +2,13 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
+ScrollTrigger.config({ ignoreMobileResize: true });
 
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 const mobileViewport = window.matchMedia("(max-width: 900px)");
 const revealDuration = 1.05;
 const revealStagger = 0.14;
+const parallaxScrub = 0.8;
 
 const isInitiallyVisible = (element) => {
 	const bounds = element.getBoundingClientRect();
@@ -24,7 +26,11 @@ const initScrollAnimations = () => {
 
 	const context = gsap.context(() => {
 		gsap.set(".hero-card", { opacity: 0, y: 14 });
-		gsap.set('[data-animation="hero-parallax"]', { scale: 1.075 });
+		gsap.set('[data-animation="hero-parallax"]', {
+			force3D: true,
+			scale: 1.06,
+			transformOrigin: "center center",
+		});
 		gsap.set(".hero-topbar", { opacity: 0, y: -12 });
 		gsap.set(".hero-copy h1", { opacity: 0, y: 24 });
 		gsap.set(".hero-lead", { opacity: 0, y: 16 });
@@ -35,7 +41,7 @@ const initScrollAnimations = () => {
 
 		heroTimeline
 			.to(".hero-card", { opacity: 1, y: 0, duration: revealDuration, clearProps: "opacity,transform" })
-			.to('[data-animation="hero-parallax"]', { scale: 1.02, duration: 1.6 }, 0)
+			.to('[data-animation="hero-parallax"]', { scale: 1.025, duration: 1.8 }, 0)
 			.to(".hero-topbar", { opacity: 1, y: 0, duration: revealDuration, clearProps: "opacity,transform" }, 0.25)
 			.to(".hero-copy h1", { opacity: 1, y: 0, duration: revealDuration, clearProps: "opacity,transform" }, 0.38)
 			.to(".hero-lead", { opacity: 1, y: 0, duration: revealDuration, clearProps: "opacity,transform" }, 0.58)
@@ -43,13 +49,15 @@ const initScrollAnimations = () => {
 
 		if (!mobileViewport.matches) {
 			gsap.to('[data-animation="hero-parallax"]', {
-				yPercent: 4,
+				yPercent: 3,
 				ease: "none",
+				overwrite: "auto",
 				scrollTrigger: {
 					trigger: ".hero-card",
 					start: "top top",
 					end: "bottom top",
-					scrub: true,
+					invalidateOnRefresh: true,
+					scrub: parallaxScrub,
 				},
 			});
 		}
@@ -113,16 +121,24 @@ const initScrollAnimations = () => {
 
 				gsap.fromTo(
 					image,
-					{ scale: 1.08, y: -distance / 2 },
 					{
-						scale: 1.08,
+						force3D: true,
+						scale: 1.065,
+						transformOrigin: "center center",
+						y: -distance / 2,
+					},
+					{
+						force3D: true,
+						scale: 1.065,
 						y: distance / 2,
 						ease: "none",
+						overwrite: "auto",
 						scrollTrigger: {
 							trigger: element,
 							start: "top bottom",
 							end: "bottom top",
-							scrub: true,
+							invalidateOnRefresh: true,
+							scrub: parallaxScrub,
 						},
 					},
 				);
