@@ -14,12 +14,19 @@ import "../styles/global.css";
 			/>
 		<title>Modular Homes | Built for life</title>
 		<link rel="icon" type="image/svg+xml" href="/media/icon.svg" />
+		<link rel="preload" as="image" href="/media/generated/hero-forest.jpg" fetchpriority="high" />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
 			href="https://fonts.googleapis.com/css2?family=Cal+Sans&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Montserrat:wght@400;500;600;700&display=swap"
 			rel="stylesheet"
 		/>
+		<script is:inline>
+			if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+				document.documentElement.classList.add("has-scroll-animations");
+				window.setTimeout(() => document.documentElement.classList.remove("has-scroll-animations"), 3000);
+			}
+		</script>
 	</head>
 
 	<body>
@@ -30,6 +37,8 @@ import "../styles/global.css";
 					src="/media/generated/hero-forest.jpg"
 						alt="Contemporary dark timber modular home in a forest clearing"
 						data-i18n-alt="images.hero"
+						data-animation="hero-parallax"
+						fetchpriority="high"
 					/>
 				<div class="hero-overlay"></div>
 
@@ -67,7 +76,6 @@ import "../styles/global.css";
 				</div>
 
 				<div class="hero-copy">
-					<p class="eyebrow eyebrow-light" data-i18n="hero.eyebrow">Precision-built modular homes</p>
 					<h1>
 						<span data-i18n="hero.title">Naturally considered homes,</span>
 						<span class="title-accent" data-i18n="hero.titleAccent">made for living.</span>
@@ -88,12 +96,11 @@ import "../styles/global.css";
 		<main>
 			<section class="intro section" id="about">
 				<div class="container">
-					<div class="intro-heading">
-						<p class="eyebrow" data-i18n="about.eyebrow">/ About us</p>
+					<div class="intro-heading" data-animation="heading">
 						<h2 data-i18n="about.title">Building a home should feel as clear as the space itself.</h2>
 					</div>
 
-					<div class="story-grid">
+					<div class="story-grid" data-animation-group="story">
 						<div class="story-copy">
 							<p data-i18n="about.paragraph1">
 								We design modular homes where simplicity and performance are inseparable.
@@ -105,10 +112,10 @@ import "../styles/global.css";
 								site with less disruption, less waste and a more predictable path to
 								moving day.
 							</p>
-							<a class="text-link" href="#benefits"><span data-i18n="about.link">Why modular</span> <span>↗</span></a>
+							<a class="text-link" href="#benefits"><span data-i18n="about.link">Why modular</span> <i class="link-plus" data-lucide="plus" aria-hidden="true"></i></a>
 						</div>
 
-						<figure class="story-small-image">
+						<figure class="story-small-image" data-animation="image-parallax" data-parallax-distance="24">
 							<img
 								src="/media/generated/forest-studio.jpg"
 								alt="Small modular garden studio among trees at dusk"
@@ -116,7 +123,7 @@ import "../styles/global.css";
 							/>
 						</figure>
 
-						<figure class="story-main-image">
+						<figure class="story-main-image" data-animation="image-parallax" data-parallax-distance="42">
 							<img
 								src="/media/generated/terrace-detail.jpg"
 								alt="Warm covered terrace and interior of a modular home"
@@ -129,9 +136,8 @@ import "../styles/global.css";
 
 			<section class="values section" id="benefits">
 				<div class="container">
-					<div class="section-heading section-heading-split">
+					<div class="section-heading section-heading-split" data-animation="heading">
 						<div>
-							<p class="eyebrow eyebrow-light" data-i18n="benefits.eyebrow">/ Why modular</p>
 							<h2><span data-i18n="benefits.title">More control.</span><br /><span class="title-accent" data-i18n="benefits.titleAccent">Less compromise.</span></h2>
 						</div>
 						<p data-i18n="benefits.lead">
@@ -140,7 +146,7 @@ import "../styles/global.css";
 						</p>
 					</div>
 
-					<div class="value-grid">
+					<div class="value-grid" data-animation-group="cards">
 							<article class="value-card">
 								<p class="card-number">01</p>
 								<h3 data-i18n="benefits.cards.0.title">Faster by design</h3>
@@ -171,12 +177,11 @@ import "../styles/global.css";
 
 			<section class="process section" id="process">
 				<div class="container">
-					<div class="process-intro">
-						<p class="eyebrow" data-i18n="process.eyebrow">/ How it works</p>
+					<div class="process-intro" data-animation="heading">
 						<h2 data-i18n="process.title">A clear process, from the first idea to your front door.</h2>
 					</div>
 
-					<div class="process-grid">
+					<div class="process-grid" data-animation-group="process">
 						<article class="process-card">
 							<img
 								src="/media/generated/meadow-home.jpg"
@@ -189,7 +194,7 @@ import "../styles/global.css";
 								We start with your site, budget and daily rhythms to create a home that
 								fits naturally into your life.
 							</p>
-							<a class="text-link" href="#contact"><span data-i18n="process.cards.0.link">Start a conversation</span> <span>↗</span></a>
+							<a class="text-link" href="#contact"><span data-i18n="process.cards.0.link">Start a conversation</span> <i class="link-plus" data-lucide="plus" aria-hidden="true"></i></a>
 						</article>
 
 						<article class="process-card">
@@ -204,7 +209,7 @@ import "../styles/global.css";
 								Your home is crafted off site while groundwork is prepared, with every
 								detail checked before delivery.
 							</p>
-							<a class="text-link" href="#contact"><span data-i18n="process.cards.1.link">Explore the process</span> <span>↗</span></a>
+							<a class="text-link" href="#contact"><span data-i18n="process.cards.1.link">Explore the process</span> <i class="link-plus" data-lucide="plus" aria-hidden="true"></i></a>
 						</article>
 
 						<article class="process-card">
@@ -219,7 +224,7 @@ import "../styles/global.css";
 								Modules arrive ready for a focused on-site assembly, so the final steps
 								feel organized and predictable.
 							</p>
-							<a class="text-link" href="#contact"><span data-i18n="process.cards.2.link">Plan your home</span> <span>↗</span></a>
+							<a class="text-link" href="#contact"><span data-i18n="process.cards.2.link">Plan your home</span> <i class="link-plus" data-lucide="plus" aria-hidden="true"></i></a>
 						</article>
 					</div>
 				</div>
@@ -227,27 +232,26 @@ import "../styles/global.css";
 
 			<section class="projects section" id="projects">
 				<div class="container">
-					<div class="section-heading section-heading-split projects-heading">
+					<div class="section-heading section-heading-split projects-heading" data-animation="heading">
 						<div>
-							<p class="eyebrow" data-i18n="projects.eyebrow">/ Selected homes</p>
 							<h2 data-i18n="projects.title">Spaces with a quieter kind of confidence.</h2>
 						</div>
-						<a class="button button-dark" href="#contact"><span data-i18n="projects.link">Discuss your project</span> <span>↗</span></a>
+						<a class="button button-dark" href="#contact" data-i18n="projects.link">Discuss your project</a>
 					</div>
 
-					<div class="projects-grid">
-							<article class="project-card project-card-large">
+					<div class="projects-grid" data-animation-group="projects">
+							<button class="project-card project-card-large" type="button" data-open-project="0">
 								<img src="/media/generated/lake-cabin.jpg" alt="Compact timber modular cabin by a lake" data-i18n-alt="images.lakeCabin" />
 								<div class="project-meta">
 									<div>
 										<p data-i18n="projects.cards.0.title">Lake cabin</p>
 										<span data-i18n="projects.cards.0.meta">Compact retreat / 42 m²</span>
 								</div>
-								<span class="project-arrow">↗</span>
+								<span class="project-arrow"><i data-lucide="plus" aria-hidden="true"></i></span>
 							</div>
-						</article>
+						</button>
 
-						<article class="project-card">
+						<button class="project-card" type="button" data-open-project="1">
 							<img
 									src="/media/generated/coastal-villa.jpg"
 									alt="Pale modular villa overlooking the Adriatic coast"
@@ -258,11 +262,11 @@ import "../styles/global.css";
 										<p data-i18n="projects.cards.1.title">Coastal home</p>
 										<span data-i18n="projects.cards.1.meta">Family villa / 118 m²</span>
 								</div>
-								<span class="project-arrow">↗</span>
+								<span class="project-arrow"><i data-lucide="plus" aria-hidden="true"></i></span>
 							</div>
-						</article>
+						</button>
 
-						<article class="project-card">
+						<button class="project-card" type="button" data-open-project="2">
 							<img
 									src="/media/generated/forest-studio.jpg"
 									alt="Dark timber modular studio in a wooded garden"
@@ -273,11 +277,11 @@ import "../styles/global.css";
 										<p data-i18n="projects.cards.2.title">Forest studio</p>
 										<span data-i18n="projects.cards.2.meta">Garden room / 24 m²</span>
 								</div>
-								<span class="project-arrow">↗</span>
+								<span class="project-arrow"><i data-lucide="plus" aria-hidden="true"></i></span>
 							</div>
-						</article>
+						</button>
 
-						<article class="project-card project-card-wide">
+						<button class="project-card project-card-wide" type="button" data-open-project="3">
 							<img
 									src="/media/generated/hero-forest.jpg"
 									alt="Dark timber modular home with large windows in a forest clearing"
@@ -288,23 +292,22 @@ import "../styles/global.css";
 										<p data-i18n="projects.cards.3.title">Woodland pavilion</p>
 										<span data-i18n="projects.cards.3.meta">Two-bedroom home / 96 m²</span>
 								</div>
-								<span class="project-arrow">↗</span>
+								<span class="project-arrow"><i data-lucide="plus" aria-hidden="true"></i></span>
 							</div>
-						</article>
+						</button>
 					</div>
 				</div>
 			</section>
 
 			<section class="statement section">
 				<div class="container">
-					<div class="statement-card">
-						<p class="eyebrow eyebrow-light" data-i18n="statement.eyebrow">/ A better way to build</p>
+					<div class="statement-card" data-animation="statement">
 						<h2 data-i18n="statement.title">
 							“Thoughtful architecture, controlled construction and a home that feels
 							entirely your own.”
 						</h2>
 
-						<div class="stats-grid">
+						<div class="stats-grid" data-animation-group="stats">
 							<div>
 								<strong>3–4</strong>
 								<span data-i18n="statement.stats.0">weeks for on-site assembly</span>
@@ -324,18 +327,15 @@ import "../styles/global.css";
 
 			<section class="contact section" id="contact">
 				<div class="container contact-grid">
-					<div class="contact-copy">
-						<p class="eyebrow" data-i18n="contact.eyebrow">/ Let's collaborate</p>
+					<div class="contact-copy" data-animation="contact-left">
 						<h2 data-i18n="contact.title">Ready to make space for what matters?</h2>
 						<p data-i18n="contact.lead">
 							Tell us where you want to build and how you want to live. We will help turn
 							that first idea into a clear plan.
 						</p>
 						<div class="contact-actions">
-							<a class="button button-accent" href="mailto:hello@modular">
-								<span data-i18n="contact.emailAction">Send an enquiry</span> <span>↗</span>
-							</a>
-							<button class="button button-outline" type="button" data-i18n="contact.callAction">Book a call</button>
+							<button class="button button-accent" type="button" data-open-modal="enquiry" data-i18n="contact.emailAction">Send an enquiry</button>
+							<button class="button button-outline" type="button" data-open-modal="booking" data-i18n="contact.callAction">Book a call</button>
 						</div>
 						<div class="contact-details">
 							<p><span>Email</span> hello@modular</p>
@@ -348,13 +348,14 @@ import "../styles/global.css";
 						src="/media/generated/coastal-villa.jpg"
 						alt="Modular villa set into a Mediterranean coastal landscape"
 						data-i18n-alt="images.contact"
+						data-animation="contact-right"
 					/>
 				</div>
 			</section>
 		</main>
 
 		<footer>
-			<div class="container footer-grid">
+			<div class="container footer-grid" data-animation-group="footer">
 				<div>
 					<a class="brand brand-light" href="#home">
 						<span class="brand-mark">✳</span>
@@ -375,6 +376,133 @@ import "../styles/global.css";
 			<span aria-hidden="true">↑</span>
 			<span data-i18n="backToTop">Back to top</span>
 		</button>
+
+		<div class="modal-layer" data-modal="enquiry" aria-hidden="true">
+			<div class="modal-backdrop" data-close-modal></div>
+			<section class="modal-card modal-card-enquiry" role="dialog" aria-modal="true" aria-labelledby="enquiry-title">
+				<button class="modal-close" type="button" data-close-modal aria-label="Close" data-i18n-aria-label="modal.close">×</button>
+				<div class="modal-intro">
+					<span class="modal-kicker" data-i18n="enquiry.kicker">Project enquiry</span>
+					<h2 id="enquiry-title" data-i18n="enquiry.title">Tell us about the home you have in mind.</h2>
+					<p data-i18n="enquiry.lead">A few practical details are enough to start. This showcase form will not send your information anywhere.</p>
+				</div>
+				<form class="modal-form" data-showcase-form="enquiry">
+					<div class="form-grid">
+						<label>
+							<span data-i18n="enquiry.name">Your name</span>
+							<input type="text" name="name" required autocomplete="name" />
+						</label>
+						<label>
+							<span data-i18n="enquiry.email">Email address</span>
+							<input type="email" name="email" required autocomplete="email" />
+						</label>
+						<label>
+							<span data-i18n="enquiry.location">Build location</span>
+							<input type="text" name="location" required />
+						</label>
+						<label>
+							<span data-i18n="enquiry.budget">Estimated budget</span>
+							<select name="budget" required>
+								<option value="" data-i18n="enquiry.selectBudget">Select a range</option>
+								<option>€150k – €250k</option>
+								<option>€250k – €400k</option>
+								<option>€400k – €600k</option>
+								<option>€600k+</option>
+							</select>
+						</label>
+						<label class="form-field-wide">
+							<span data-i18n="enquiry.message">What should we know?</span>
+							<textarea name="message" rows="4" required data-i18n-placeholder="enquiry.messagePlaceholder" placeholder="Size, rooms, site details or the feeling you want to create..."></textarea>
+						</label>
+					</div>
+					<div class="modal-form-footer">
+						<p data-i18n="modal.showcaseNote">Showcase mode · No information is sent or stored.</p>
+						<button class="button button-dark" type="submit" data-i18n="enquiry.submit">Send project brief</button>
+					</div>
+				</form>
+				<div class="modal-success" data-modal-success hidden>
+					<span class="success-mark">✓</span>
+					<h3 data-i18n="enquiry.successTitle">Your project brief is ready.</h3>
+					<p data-i18n="enquiry.successBody">Thanks for sharing the first details. In a live version, our studio would reply within two working days.</p>
+					<button class="button button-dark" type="button" data-close-modal data-i18n="modal.done">Done</button>
+				</div>
+			</section>
+		</div>
+
+		<div class="modal-layer" data-modal="booking" aria-hidden="true">
+			<div class="modal-backdrop" data-close-modal></div>
+			<section class="modal-card modal-card-booking" role="dialog" aria-modal="true" aria-labelledby="booking-title">
+				<button class="modal-close" type="button" data-close-modal aria-label="Close" data-i18n-aria-label="modal.close">×</button>
+				<div class="modal-intro">
+					<span class="modal-kicker" data-i18n="booking.kicker">Introductory call</span>
+					<h2 id="booking-title" data-i18n="booking.title">Choose a time that works for you.</h2>
+					<p data-i18n="booking.lead">A relaxed 30-minute call to discuss your site, priorities and next practical steps.</p>
+				</div>
+				<form class="booking-layout" data-showcase-form="booking">
+					<div class="booking-calendar">
+						<div class="booking-calendar-head">
+							<button type="button" aria-label="Previous week" data-booking-previous>←</button>
+							<strong data-booking-month>June 2026</strong>
+							<button type="button" aria-label="Next week" data-booking-next>→</button>
+						</div>
+						<div class="booking-dates" data-booking-dates></div>
+						<div class="booking-legend">
+							<span><i></i><span data-i18n="booking.available">Available</span></span>
+							<span><i class="is-booked"></i><span data-i18n="booking.booked">Booked</span></span>
+						</div>
+					</div>
+					<div class="booking-times">
+						<p class="booking-date-label" data-booking-date-label></p>
+						<div class="time-slots" data-time-slots></div>
+						<div class="modal-form-footer">
+							<p data-i18n="modal.showcaseNote">Showcase mode · No information is sent or stored.</p>
+							<button class="button button-dark" type="submit" disabled data-booking-submit data-i18n="booking.submit">Confirm call</button>
+						</div>
+					</div>
+				</form>
+				<div class="modal-success" data-modal-success hidden>
+					<span class="success-mark">✓</span>
+					<h3 data-i18n="booking.successTitle">Your call is reserved.</h3>
+					<p><span data-i18n="booking.successBody">We have held</span> <strong data-booking-confirmation></strong>. <span data-i18n="booking.successEnd">In a live version, a calendar invitation would be on its way.</span></p>
+					<button class="button button-dark" type="button" data-close-modal data-i18n="modal.done">Done</button>
+				</div>
+			</section>
+		</div>
+
+		<div class="modal-layer" data-modal="project" aria-hidden="true">
+			<div class="modal-backdrop" data-close-modal></div>
+			<section class="modal-card modal-card-project" role="dialog" aria-modal="true" aria-labelledby="project-modal-title">
+				<button class="modal-close modal-close-on-image" type="button" data-close-modal aria-label="Close" data-i18n-aria-label="modal.close">×</button>
+				<div class="project-modal-image-wrap">
+					<img data-project-modal-image src="/media/generated/lake-cabin.jpg" alt="" />
+					<span class="project-modal-index" data-project-modal-index>01 / 04</span>
+				</div>
+				<div class="project-modal-content">
+					<div class="project-modal-heading">
+						<div>
+							<span class="modal-kicker" data-project-modal-type>Compact retreat</span>
+							<h2 id="project-modal-title" data-project-modal-title>Lake cabin</h2>
+						</div>
+						<p data-project-modal-description></p>
+					</div>
+					<div class="project-specs">
+						<div><span data-i18n="projectModal.location">Location</span><strong data-project-modal-location></strong></div>
+						<div><span data-i18n="projectModal.area">Area</span><strong data-project-modal-area></strong></div>
+						<div><span data-i18n="projectModal.bedrooms">Bedrooms</span><strong data-project-modal-bedrooms></strong></div>
+						<div><span data-i18n="projectModal.status">Status</span><strong data-project-modal-status></strong></div>
+					</div>
+					<div class="project-modal-bottom">
+						<div>
+							<span class="project-features-label" data-i18n="projectModal.features">Key features</span>
+							<div class="project-features" data-project-modal-features></div>
+						</div>
+						<button class="button button-dark" type="button" data-close-modal data-scroll-to-contact data-i18n="projectModal.cta">Discuss a similar home</button>
+					</div>
+				</div>
+			</section>
+		</div>
 		<script is:inline src="/i18n.js"></script>
+		<script src="../scripts/icons.js"></script>
+		<script src="../scripts/scroll-animations.js"></script>
 	</body>
 </html>
