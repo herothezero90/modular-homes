@@ -6,13 +6,13 @@ ScrollTrigger.config({ ignoreMobileResize: true });
 
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 const mobileViewport = window.matchMedia("(max-width: 900px)");
-const revealDuration = 1.05;
 const revealStagger = 0.14;
+const revealStart = "top 85%";
+const revealDelay = 0.15;
 const parallaxScrub = 0.8;
 
 const isInitiallyVisible = (element) => {
 	const bounds = element.getBoundingClientRect();
-
 	return bounds.top < window.innerHeight * 0.94 && bounds.bottom > 0;
 };
 
@@ -22,7 +22,9 @@ const initScrollAnimations = () => {
 		return;
 	}
 
-	const revealDistance = mobileViewport.matches ? 18 : 28;
+	const isMobile = mobileViewport.matches;
+	const revealDistance = isMobile ? 40 : 28;
+	const revealDuration = isMobile ? 1.2 : 1.05;
 
 	const context = gsap.context(() => {
 		gsap.set(".hero-card", { opacity: 0, y: 14 });
@@ -47,7 +49,7 @@ const initScrollAnimations = () => {
 			.to(".hero-lead", { opacity: 1, y: 0, duration: revealDuration, clearProps: "opacity,transform" }, 0.58)
 			.to(".language-switcher-mobile", { opacity: 1, y: 0, duration: revealDuration, clearProps: "opacity,transform" }, 0.68);
 
-		if (!mobileViewport.matches) {
+		if (!isMobile) {
 			gsap.to('[data-animation="hero-parallax"]', {
 				yPercent: 3,
 				ease: "none",
@@ -62,11 +64,9 @@ const initScrollAnimations = () => {
 			});
 		}
 
-		const reveal = (element, vars, start = "top 86%", initialDelay = 0.15) => {
-			const animationVars = {
-				...vars,
-				clearProps: "opacity,transform",
-			};
+		// Single-element reveal
+		const reveal = (element, vars, start = revealStart, initialDelay = revealDelay) => {
+			const animationVars = { ...vars, clearProps: "opacity,transform" };
 
 			if (isInitiallyVisible(element)) {
 				gsap.from(element, { ...animationVars, delay: initialDelay });
@@ -75,58 +75,56 @@ const initScrollAnimations = () => {
 
 			gsap.from(element, {
 				...animationVars,
-				scrollTrigger: {
-					trigger: element,
-					start,
-					once: true,
-				},
+				scrollTrigger: { trigger: element, start, once: true },
 			});
 		};
 
-		const revealGroup = (group, vars, start = "top 84%", initialDelay = 0.15) => {
-			const animationVars = {
-				...vars,
-				clearProps: "opacity,transform",
-				stagger: vars.stagger ?? revealStagger,
-			};
+		// Group reveal:
+		// - Mobile: each child gets its own ScrollTrigger so vertical items animate as you scroll to them
+		// - Desktop: single trigger on group with stagger so horizontal rows cascade nicely
+		const revealItems = (group, vars, start = revealStart) => {
+			const baseVars = { ...vars, duration: revealDuration, ease: "power3.out", clearProps: "opacity,transform" };
+			delete baseVars.stagger;
 
-			if (isInitiallyVisible(group)) {
-				gsap.from(group.children, { ...animationVars, delay: initialDelay });
-				return;
+			if (isMobile) {
+				[...group.children].forEach((child, i) => {
+					if (isInitiallyVisible(child)) {
+						gsap.from(child, { ...baseVars, delay: revealDelay + i * revealStagger });
+					} else {
+						gsap.from(child, {
+							...baseVars,
+							scrollTrigger: { trigger: child, start, once: true },
+						});
+					}
+				});
+			} else {
+				const groupVars = { ...baseVars, stagger: revealStagger };
+
+				if (isInitiallyVisible(group)) {
+					gsap.from(group.children, { ...groupVars, delay: revealDelay });
+				} else {
+					gsap.from(group.children, {
+						...groupVars,
+						scrollTrigger: { trigger: group, start, once: true },
+					});
+				}
 			}
-
-			gsap.from(group.children, {
-				...animationVars,
-				scrollTrigger: {
-					trigger: group,
-					start,
-					once: true,
-				},
-			});
 		};
 
+		// Headings
 		gsap.utils.toArray('[data-animation="heading"]').forEach((element) => {
-			reveal(element, {
-				opacity: 0,
-				y: revealDistance,
-				duration: revealDuration,
-				ease: "power3.out",
-			}, "top 88%", 0.85);
+			reveal(element, { opacity: 0, y: revealDistance, duration: revealDuration, ease: "power3.out" });
 		});
 
-		if (!mobileViewport.matches) {
+		// Image parallax — desktop only; mobile gets fade via revealItems (story group)
+		if (!isMobile) {
 			gsap.utils.toArray('[data-animation="image-parallax"]').forEach((element) => {
 				const image = element.querySelector("img");
 				const distance = Number(element.dataset.parallaxDistance) || 32;
 
 				gsap.fromTo(
 					image,
-					{
-						force3D: true,
-						scale: 1.065,
-						transformOrigin: "center center",
-						y: -distance / 2,
-					},
+					{ force3D: true, scale: 1.065, transformOrigin: "center center", y: -distance / 2 },
 					{
 						force3D: true,
 						scale: 1.065,
@@ -146,110 +144,79 @@ const initScrollAnimations = () => {
 		}
 
 		gsap.utils.toArray('[data-animation-group="story"]').forEach((group) => {
-			revealGroup(group, {
-				opacity: 0,
-				y: revealDistance,
-				duration: revealDuration,
-				ease: "power3.out",
-				stagger: revealStagger,
-			}, "top 86%", 1);
+			revealItems(group, { opacity: 0, y: revealDistance });
 		});
 
 		gsap.utils.toArray('[data-animation-group="cards"]').forEach((group) => {
-			revealGroup(group, {
-				opacity: 0,
-				y: revealDistance,
-				duration: revealDuration,
-				ease: "power3.out",
-				stagger: revealStagger,
-			});
+			revealItems(group, { opacity: 0, y: revealDistance });
 		});
 
 		gsap.utils.toArray('[data-animation-group="process"]').forEach((group) => {
-			revealGroup(group, {
-				opacity: 0,
-				y: revealDistance,
-				duration: revealDuration,
-				ease: "power3.out",
-				stagger: revealStagger,
-			}, "top 84%", 0.2);
+			revealItems(group, { opacity: 0, y: revealDistance });
 		});
 
 		gsap.utils.toArray('[data-animation-group="projects"]').forEach((group) => {
-			revealGroup(group, {
-				opacity: 0,
-				y: revealDistance,
-				duration: revealDuration,
-				ease: "power3.out",
-				stagger: revealStagger,
-			}, "top 84%");
+			revealItems(group, { opacity: 0, y: revealDistance });
 		});
 
+		// Statement + stats
 		const statement = document.querySelector('[data-animation="statement"]');
 		const stats = document.querySelector('[data-animation-group="stats"]');
 
 		if (statement && stats) {
-			const statementTimeline = gsap.timeline(
-				isInitiallyVisible(statement)
-					? { delay: 0.2 }
-					: {
-							scrollTrigger: {
-								trigger: statement,
-								start: "top 84%",
-								once: true,
-							},
-						},
-			);
-
-			statementTimeline
-				.from(statement, {
-					opacity: 0,
-					y: 28,
-					duration: revealDuration,
-					ease: "power3.out",
-					clearProps: "opacity,transform",
-				})
-				.from(
-					stats.children,
-					{
-						opacity: 0,
-						y: 18,
-						duration: revealDuration,
-						ease: "power2.out",
-						stagger: revealStagger,
-						clearProps: "opacity,transform",
-					},
-					"-=0.4",
+			if (isMobile) {
+				// On mobile each element triggers independently as it enters the viewport
+				reveal(statement, { opacity: 0, y: revealDistance, duration: revealDuration, ease: "power3.out" });
+				[...stats.children].forEach((child) => {
+					reveal(child, { opacity: 0, y: revealDistance, duration: revealDuration, ease: "power2.out" });
+				});
+			} else {
+				// Desktop: timeline so statement and stats play as a single composed sequence
+				const statementTimeline = gsap.timeline(
+					isInitiallyVisible(statement)
+						? { delay: 0.2 }
+						: { scrollTrigger: { trigger: statement, start: revealStart, once: true } },
 				);
+
+				statementTimeline
+					.from(statement, {
+						opacity: 0,
+						y: 28,
+						duration: revealDuration,
+						ease: "power3.out",
+						clearProps: "opacity,transform",
+					})
+					.from(
+						stats.children,
+						{
+							opacity: 0,
+							y: 18,
+							duration: revealDuration,
+							ease: "power2.out",
+							stagger: revealStagger,
+							clearProps: "opacity,transform",
+						},
+						"-=0.4",
+					);
+			}
 		}
 
+		// Contact — horizontal slide on desktop, vertical fade on mobile
 		const contactLeft = document.querySelector('[data-animation="contact-left"]');
 		const contactRight = document.querySelector('[data-animation="contact-right"]');
 
 		if (contactLeft && contactRight) {
-			reveal(contactLeft, {
-				opacity: 0,
-				x: -28,
-				duration: revealDuration,
-				ease: "power3.out",
-			}, "top 84%");
-
-			reveal(contactRight, {
-				opacity: 0,
-				x: 28,
-				duration: revealDuration,
-				ease: "power3.out",
-			}, "top 84%", 0.25);
+			if (isMobile) {
+				reveal(contactLeft, { opacity: 0, y: revealDistance, duration: revealDuration, ease: "power3.out" });
+				reveal(contactRight, { opacity: 0, y: revealDistance, duration: revealDuration, ease: "power3.out" }, revealStart, 0.25);
+			} else {
+				reveal(contactLeft, { opacity: 0, x: -28, duration: revealDuration, ease: "power3.out" });
+				reveal(contactRight, { opacity: 0, x: 28, duration: revealDuration, ease: "power3.out" }, revealStart, 0.25);
+			}
 		}
 
 		gsap.utils.toArray('[data-animation-group="footer"]').forEach((group) => {
-			revealGroup(group, {
-				opacity: 0,
-				y: 16,
-				duration: revealDuration,
-				ease: "power3.out",
-				stagger: revealStagger,
-			}, "top 96%");
+			revealItems(group, { opacity: 0, y: revealDistance }, "top 92%");
 		});
 	});
 

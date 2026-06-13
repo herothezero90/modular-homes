@@ -410,6 +410,7 @@ const getTranslation = (language, key) => {
 };
 
 const menuToggle = document.querySelector("[data-menu-toggle]");
+const stickyToggle = document.querySelector("[data-sticky-menu-toggle]");
 const heroMenu = document.getElementById("hero-menu");
 
 const setMenuOpen = (isOpen) => {
@@ -422,6 +423,8 @@ const setMenuOpen = (isOpen) => {
 	heroMenu.classList.toggle("is-open", isOpen);
 	menuToggle.setAttribute("aria-expanded", String(isOpen));
 	menuToggle.setAttribute("aria-label", getTranslation(language, isOpen ? "nav.closeMenu" : "nav.openMenu"));
+	stickyToggle?.setAttribute("aria-expanded", String(isOpen));
+	stickyToggle?.setAttribute("aria-label", getTranslation(language, isOpen ? "nav.closeMenu" : "nav.openMenu"));
 };
 
 const applyLanguage = (language) => {
@@ -501,6 +504,10 @@ menuToggle?.addEventListener("click", () => {
 	setMenuOpen(!heroMenu.classList.contains("is-open"));
 });
 
+stickyToggle?.addEventListener("click", () => {
+	setMenuOpen(!heroMenu.classList.contains("is-open"));
+});
+
 heroMenu?.querySelectorAll("a").forEach((link) => {
 	link.addEventListener("click", () => setMenuOpen(false));
 });
@@ -510,6 +517,36 @@ window.addEventListener("resize", () => {
 		setMenuOpen(false);
 	}
 });
+
+// Match the sticky toggle colour to the background directly beneath it.
+if (stickyToggle) {
+	const darkBackgroundSelector = ".hero-card, .values, footer";
+	let stickyColourFrame;
+
+	const updateStickyToggleColour = () => {
+		stickyColourFrame = undefined;
+		const bounds = stickyToggle.getBoundingClientRect();
+		const elementsUnderToggle = document.elementsFromPoint(
+			bounds.left + bounds.width / 2,
+			bounds.top + bounds.height / 2,
+		);
+		const isOnDarkBackground = elementsUnderToggle.some(
+			(element) => element !== stickyToggle && !stickyToggle.contains(element) && element.closest(darkBackgroundSelector),
+		);
+
+		stickyToggle.classList.toggle("is-light", isOnDarkBackground);
+	};
+
+	const queueStickyToggleColourUpdate = () => {
+		if (!stickyColourFrame) {
+			stickyColourFrame = window.requestAnimationFrame(updateStickyToggleColour);
+		}
+	};
+
+	updateStickyToggleColour();
+	window.addEventListener("scroll", queueStickyToggleColourUpdate, { passive: true });
+	window.addEventListener("resize", queueStickyToggleColourUpdate);
+}
 
 const backToTop = document.querySelector("[data-back-to-top]");
 

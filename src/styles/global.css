@@ -254,7 +254,7 @@ h3 {
 	position: absolute;
 	right: 40px;
 	top: 28px;
-	z-index: 1;
+	z-index: 5;
 }
 
 .hero-copy {
@@ -1358,6 +1358,57 @@ body.modal-open {
 	padding: 6px 10px;
 }
 
+/* Sticky hamburger */
+.nav-sticky-toggle {
+	align-items: center;
+	background: rgba(22, 42, 35, 0.07);
+	border: 1px solid rgba(22, 42, 35, 0.16);
+	border-radius: 99px;
+	display: none;
+	flex-direction: column;
+	gap: 5px;
+	height: 44px;
+	justify-content: center;
+	padding: 0;
+	position: fixed;
+	right: 16px;
+	top: 16px;
+	transition: background 220ms ease, border-color 220ms ease;
+	width: 44px;
+	z-index: 200;
+}
+
+.nav-sticky-toggle span {
+	background: var(--forest);
+	border-radius: 1px;
+	display: block;
+	height: 2px;
+	transition: transform 200ms ease, opacity 200ms ease, background 200ms ease;
+	width: 20px;
+}
+
+.nav-sticky-toggle[aria-expanded="true"] span:first-child {
+	transform: translateY(7px) rotate(45deg);
+}
+
+.nav-sticky-toggle[aria-expanded="true"] span:nth-child(2) {
+	opacity: 0;
+}
+
+.nav-sticky-toggle[aria-expanded="true"] span:last-child {
+	transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Over dark-green sections */
+.nav-sticky-toggle.is-light {
+	background: rgba(245, 240, 231, 0.14);
+	border-color: rgba(245, 240, 231, 0.24);
+}
+
+.nav-sticky-toggle.is-light span {
+	background: var(--cream);
+}
+
 @media (max-width: 1100px) {
 	.hero-topbar {
 		align-items: center;
@@ -1365,20 +1416,21 @@ body.modal-open {
 
 	.hero-controls {
 		align-items: flex-end;
-		background: rgba(22, 42, 35, 0.94);
-		border: 1px solid rgba(245, 240, 231, 0.2);
+		background: var(--cream);
+		border: 1px solid var(--line);
 		border-radius: 16px;
 		flex-direction: column;
 		min-width: 235px;
 		opacity: 0;
 		padding: 18px 20px;
 		pointer-events: none;
-		position: absolute;
-		right: 0;
-		top: calc(100% + 18px);
+		position: fixed;
+		right: 16px;
+		top: 72px;
 		transform: translateY(-8px);
 		transition: opacity 180ms ease, transform 180ms ease, visibility 180ms ease;
 		visibility: hidden;
+		z-index: 150;
 	}
 
 	.hero-controls.is-open {
@@ -1388,7 +1440,38 @@ body.modal-open {
 		visibility: visible;
 	}
 
+	.hero-controls .hero-nav > a {
+		color: var(--forest);
+	}
+
+	.hero-controls .hero-nav > a:hover,
+	.hero-controls .hero-nav .nav-cta {
+		color: var(--terracotta);
+	}
+
+	.hero-controls .language-switcher {
+		border-top: 1px solid var(--line);
+		color: var(--muted);
+		justify-content: flex-end;
+		margin-top: 6px;
+		padding-top: 12px;
+		width: 100%;
+	}
+
+	.hero-controls .language-switcher button {
+		color: rgba(22, 42, 35, 0.55);
+	}
+
+	.hero-controls .language-switcher button:hover,
+	.hero-controls .language-switcher button.is-active {
+		color: var(--terracotta);
+	}
+
 	.menu-toggle {
+		display: none;
+	}
+
+	.nav-sticky-toggle {
 		display: flex;
 	}
 
